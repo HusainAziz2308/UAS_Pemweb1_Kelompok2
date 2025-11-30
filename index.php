@@ -16,6 +16,7 @@
                 <li><a href="home">home</a></li>
             </ul>
         </nav>
+        <p>hari ini cuaca sangat cerah</p>
     </div>
 </body>
 </html>
