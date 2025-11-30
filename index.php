@@ -16,6 +16,9 @@
                 <li><a href="home">home</a></li>
             </ul>
         </nav>
+        <section>
+            <h2>selamat datang</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
         <p>hari ini cuaca sangat cerah</p>
     </div>
 </body>
