@@ -2,7 +2,7 @@
     $Host = "localhost";
     $User = "root";
     $Password = "";
-    $Database = "uas_pemweb1_kelompok2";
+    $Database = "db_kopi";
 
     $koneksi = mysqli_connect($Host, $User, $Password, $Database);
     if (!$koneksi) {
