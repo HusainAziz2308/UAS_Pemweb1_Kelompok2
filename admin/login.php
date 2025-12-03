@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../config/koneksi.php"; 
+require "../config/koneksi.php";
 
 if (isset($_SESSION['admin'])) {
     header("Location: dashboard.php");
@@ -13,22 +13,19 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $koneksi->prepare("SELECT * FROM tb_admin WHERE username = ?"); 
+    $stmt = $koneksi->prepare("SELECT * FROM tb_admin WHERE username = ?");
     
     if ($stmt === false) {
-        $pesan = "Terjadi kesalahan database dalam penyiapan query: " . $koneksi->error;
+        $pesan = "Terjadi kesalahan database: " . $koneksi->error;
     } else {
         $stmt->bind_param("s", $username);
-        
         $stmt->execute();
-        
         $result = $stmt->get_result();
         $data = $result->fetch_assoc();
-        
         $stmt->close();
 
         if ($data) {
-            if (password_verify($password, $data['password'])) {
+            if ($password === $data['password']) {
                 $_SESSION['admin'] = $data['username'];
                 header("Location: dashboard.php");
                 exit();
