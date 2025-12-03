@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../config/koneksi.php";
+require "../config/koneksi.php"; 
 
 if (isset($_SESSION['admin'])) {
     header("Location: dashboard.php");
@@ -13,19 +13,31 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = mysqli_query($conn, "SELECT * FROM tb_admin WHERE username='$username'");
-    $data = mysqli_fetch_assoc($query);
-
-    if ($data) {
-        if (password_verify($password, $data['password'])) {
-            $_SESSION['admin'] = $data['username'];
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            $pesan = "Password salah!";
-        }
+    $stmt = $koneksi->prepare("SELECT * FROM tb_admin WHERE username = ?"); 
+    
+    if ($stmt === false) {
+        $pesan = "Terjadi kesalahan database dalam penyiapan query: " . $koneksi->error;
     } else {
-        $pesan = "Username tidak ditemukan!";
+        $stmt->bind_param("s", $username);
+        
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+        
+        $stmt->close();
+
+        if ($data) {
+            if (password_verify($password, $data['password'])) {
+                $_SESSION['admin'] = $data['username'];
+                header("Location: dashboard.php");
+                exit();
+            } else {
+                $pesan = "Password salah!";
+            }
+        } else {
+            $pesan = "Username tidak ditemukan!";
+        }
     }
 }
 ?>
@@ -33,17 +45,37 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <style>
     body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         background-color: #0080ffff;
         /*background-image: url('../assets/img/background.jpg');*/
         background-size: cover;
         background-position: center;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
     }
+
+    .container.mt-5 {
+        max-width: 400px;
+        width: 100%;
+    }
+
+    /* Catatan: Selektor ini mungkin tidak berfungsi karena sintaks CSS yang salah (col-md-4.offset-md-4) */
+    /* Jika Anda menggunakan Bootstrap, biarkan kelas di HTML saja */
+    /* col-md-4.offset-md-4 {
+        width: 100%;
+        max-width: 400px;
+    } */
+
     .card-body {
         display: block;
         align-content: space-between;
@@ -52,7 +84,6 @@ if (isset($_POST['login'])) {
         align-content: center;
         background-color: #ffffffff;
         padding: 50px;
-        margin: 100px;
         border-radius: 15px;
     }
 
@@ -60,40 +91,75 @@ if (isset($_POST['login'])) {
         text-align: center;
         margin-bottom: 20px;
     }
-    .form-login {
-        
+
+    .form-login label {
+        font-weight: bold;
+        text-align: left; /* Diubah ke kiri agar label sejajar */
+        display: block; /* Agar label mengambil baris penuh */
+        margin-bottom: 5px; /* Sedikit jarak di bawah label */
     }
-    
+
+    .form-login input {
+        border: 3px solid #acacacff;
+        border-radius: 25px;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 15px;
+    }
+
+    .card-body form {
+        display: block;
+        align-content: space-between;
+        justify-content: center;
+    }
+
+    .tb-login {
+        width: 100%;
+        background-color: #ff0000ff;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .alert-login {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #ffdddd;
+        border-left: 6px solid #f44336;
+        border-radius: 5px;
+        color: #a94442;
+    }
 </style>
+
 <body class="bg-light">
+    <div class="container mt-5">
+        <div class="col-md-4 offset-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h3>Login Admin</h3>
+                    <form method="POST">
+                        <div class="form-login">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="username" required>
+                        </div>
+                        <div class="form-login">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="password" required>
+                        </div>
 
-<div class="container mt-5">
-    <div class="col-md-4 offset-md-4">
-        <div class="card shadow">
-            <div class="card-body">
-                <h3>Login Admin</h3>
-                <?php if ($pesan != "") { ?>
-                    <div class="alert alert-danger"><?= $pesan ?></div>
-                <?php } ?>
+                        <button class="tb-login" name="login">Login</button>
 
-                <form method="POST">
-                    <div class="form-login">
-                        <label>Username</label>
-                        <br>
-                        <input type="text" name="username" class="form-control" placeholder="Username" required>
-                    </div>
-                    <div class="form-login">
-                        <label>Password</label>
-                        <br>
-                        <input type="password" name="password" class="form-control" placeholder="password" required>
-                    </div>
-
-                    <button class="btn btn-primary w-100" name="login">Login</button>
-                </form>
+                        <?php if ($pesan != "") { ?>
+                            <div class="alert-login"><?= $pesan ?></div>
+                        <?php } ?>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 </body>
 </html>
