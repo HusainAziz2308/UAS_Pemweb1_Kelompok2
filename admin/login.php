@@ -69,13 +69,6 @@ if (isset($_POST['login'])) {
         width: 100%;
     }
 
-    /* Catatan: Selektor ini mungkin tidak berfungsi karena sintaks CSS yang salah (col-md-4.offset-md-4) */
-    /* Jika Anda menggunakan Bootstrap, biarkan kelas di HTML saja */
-    /* col-md-4.offset-md-4 {
-        width: 100%;
-        max-width: 400px;
-    } */
-
     .card-body {
         display: block;
         align-content: space-between;
@@ -94,9 +87,9 @@ if (isset($_POST['login'])) {
 
     .form-login label {
         font-weight: bold;
-        text-align: left; /* Diubah ke kiri agar label sejajar */
-        display: block; /* Agar label mengambil baris penuh */
-        margin-bottom: 5px; /* Sedikit jarak di bawah label */
+        text-align: left;
+        display: block;
+        margin-bottom: 5px;
     }
 
     .form-login input {
