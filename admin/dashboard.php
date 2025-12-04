@@ -1,12 +1,12 @@
 <?php
     session_start();
     require "../config/koneksi.php";
-    if (isset($_SESSION['admin'])){
+
+    if (!isset($_SESSION['admin'])) {
         header('location: login.php');
         exit();
-    }
+}
 ?>
-<a href="logout.php">Logout</a>
 
 <!DOCTYPE html>
 <html lang="en">
