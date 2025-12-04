@@ -49,10 +49,12 @@ if (isset($_POST['login'])) {
 </head>
 <style>
     body {
-        background-color: #0080ffff;
-        /*background-image: url('../assets/img/background.jpg');*/
+        /*background-color: #0080ffff;*/
+        background-image: url('../assets/img/bg kopi 1.jpg');
         background-size: cover;
         background-position: center;
+        backdrop-filter: brightness(60%);
+        background-blend-mode: darken;
 
         display: flex;
         justify-content: center;
@@ -70,32 +72,39 @@ if (isset($_POST['login'])) {
         display: block;
         align-content: space-between;
         margin-bottom: 15px;
-
         align-content: center;
-        background-color: #ffffffff;
-        padding: 50px;
+        padding: 20px 40px 40px 40px;
         border-radius: 15px;
+
+        border: 2px solid #ffffffaa;
+        background: transparent;
+        backdrop-filter: blur(20px);
     }
 
     .card-body h1 {
+        color: #fff;
         text-align: center;
         margin-bottom: 30px;
-    }
-
-    .form-login label {
-        font-weight: bold;
-        text-align: left;
-        display: block;
-        margin-bottom: 5px;
+        border-bottom: 2px solid #ffffffff;
+        padding-bottom: 20px;
     }
 
     .form-login input {
-        border: 3px solid #acacacff;
-        border-radius: 25px;
-        padding: 15px;
+        background: transparent;
+        border: 3px solid #ffffffff;
+        border-radius: 40px;
+        padding: 20px 45px 20px 20px;
         width: 100%;
+        
+        color: #fff;
+        outline: none;
         box-sizing: border-box;
-        margin-bottom: 15px;
+        margin-bottom: 25px;
+    }
+
+    .form-login input::placeholder {
+        font-size: medium;
+        color: #ffffffce;
     }
 
     .card-body form {
@@ -109,10 +118,11 @@ if (isset($_POST['login'])) {
         background-color: #ff0000ff;
         color: #fff;
         border: none;
-        padding: 10px;
+        padding: 15px;
         border-radius: 25px;
         cursor: pointer;
         font-size: 16px;
+        
     }
 
     .alert-login {
@@ -133,12 +143,12 @@ if (isset($_POST['login'])) {
                     <h1>Login Admin</h1>
                     <form method="POST">
                         <div class="form-login">
-                            <label>Username</label>
-                            <input type="text" name="username" class="form-control" placeholder="username" required>
+
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
                         </div>
                         <div class="form-login">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="password" required>
+
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
 
                         <button class="tb-login" name="login">Login</button>
