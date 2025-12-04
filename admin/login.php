@@ -77,9 +77,9 @@ if (isset($_POST['login'])) {
         border-radius: 15px;
     }
 
-    .card-body h3 {
+    .card-body h1 {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .form-login label {
@@ -130,7 +130,7 @@ if (isset($_POST['login'])) {
         <div class="col-md-4 offset-md-4">
             <div class="card shadow">
                 <div class="card-body">
-                    <h3>Login Admin</h3>
+                    <h1>Login Admin</h1>
                     <form method="POST">
                         <div class="form-login">
                             <label>Username</label>
