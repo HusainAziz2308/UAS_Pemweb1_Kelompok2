@@ -63,13 +63,10 @@ if (isset($_POST['login'])) {
         margin: 0;
     }
 
-    .container.mt-5 {
-        max-width: 400px;
-        width: 100%;
-    }
-
     .card-body {
         display: block;
+        max-width: 320px;
+        width: 100%;
         align-content: space-between;
         margin-bottom: 15px;
         align-content: center;
@@ -78,7 +75,8 @@ if (isset($_POST['login'])) {
 
         border: 2px solid #ffffffaa;
         background: transparent;
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(25px);
+        box-shadow: 0 10px 20px #00000055;
     }
 
     .card-body h1 {
@@ -90,6 +88,7 @@ if (isset($_POST['login'])) {
     }
 
     .form-login input {
+        font-size: medium;
         background: transparent;
         border: 3px solid #ffffffff;
         border-radius: 40px;
@@ -114,8 +113,9 @@ if (isset($_POST['login'])) {
     }
 
     .tb-login {
+        font-weight: 600;
         width: 100%;
-        background-color: #ff0000ff;
+        background-color: #eb7500ff;
         color: #fff;
         border: none;
         padding: 15px;
@@ -123,6 +123,13 @@ if (isset($_POST['login'])) {
         cursor: pointer;
         font-size: 16px;
         
+    }
+
+    .tb-login:hover {
+        scale: 1.04;
+        background-color: #964B00;
+        box-shadow: 1 9px 9px #ffffff55;
+        transition: 0.3s;
     }
 
     .alert-login {
@@ -136,30 +143,24 @@ if (isset($_POST['login'])) {
 </style>
 
 <body class="bg-light">
-    <div class="container mt-5">
-        <div class="col-md-4 offset-md-4">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h1>Login Admin</h1>
-                    <form method="POST">
-                        <div class="form-login">
+    <div class="card-body">
+        <h1>Login Admin</h1>
+        <form method="POST">
+            <div class="form-login">
 
-                            <input type="text" name="username" class="form-control" placeholder="Username" required>
-                        </div>
-                        <div class="form-login">
-
-                            <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        </div>
-
-                        <button class="tb-login" name="login">Login</button>
-
-                        <?php if ($pesan != "") { ?>
-                            <div class="alert-login"><?= $pesan ?></div>
-                        <?php } ?>
-                    </form>
-                </div>
+                <input type="text" name="username" class="form-control" placeholder="Username" required>
             </div>
-        </div>
+            <div class="form-login">
+
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+
+            <button class="tb-login" name="login">Login</button>
+
+            <?php if ($pesan != "") { ?>
+                <div class="alert-login"><?= $pesan ?></div>
+            <?php } ?>
+        </form>
     </div>
 </body>
 </html>
