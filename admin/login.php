@@ -128,7 +128,7 @@ if (isset($_POST['login'])) {
     .tb-login:hover {
         scale: 1.04;
         background-color: #964B00;
-        box-shadow: 1 9px 9px #ffffff55;
+        box-shadow: 1 8px 8px #ffffff55;
         transition: 0.3s;
     }
 
