@@ -1,6 +1,6 @@
 <?php
     $Host = "localhost";
-    $User = "ruangkopi";
+    $User = "u652573098_ruangkopi";
     $Password = "@PemwebKelompok2";
     $Database = "u652573098_db_Kopi";
 
