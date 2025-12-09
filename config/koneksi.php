@@ -9,6 +9,6 @@
         die("Koneksi gagal: " . mysqli_connect_error());
     }else{
         echo "Koneksi berhasil";
-        mysqli_close($conn);
+        mysqli_close($koneksi);
     }       
 ?>
