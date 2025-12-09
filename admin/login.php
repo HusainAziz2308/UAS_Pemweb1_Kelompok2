@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
 <style>
     body {
         /*background-color: #0080ffff;*/
-        background-image: url('/assets/img/bg kopi 1.jpg');
+        background-image: url('/assets/img/bg_kopi_1.jpg');
         background-size: cover;
         background-position: center;
         backdrop-filter: brightness(60%);
