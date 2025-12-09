@@ -45,6 +45,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin</title>
+    <link rel="shortcut icon" href="/assets/img/favicon1.png" type="image/png">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <style>
