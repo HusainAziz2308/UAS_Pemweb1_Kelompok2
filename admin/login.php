@@ -149,7 +149,7 @@ if (isset($_POST['login'])) {
 </style>
 
 <body class="bg-light">
-    <img src="logo1.png" alt="logo">
+    <img src="/assets/img/logo1.png" alt="logo">
     <div class="card-body">
         <h1>Login Admin</h1>
         <form method="POST">
