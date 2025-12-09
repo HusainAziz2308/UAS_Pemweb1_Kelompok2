@@ -58,10 +58,14 @@ if (isset($_POST['login'])) {
         background-blend-mode: darken;
 
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         margin: 0;
+    }
+    img {
+        max-width: 400px;
     }
 
     .card-body {
@@ -69,7 +73,8 @@ if (isset($_POST['login'])) {
         max-width: 320px;
         width: 100%;
         align-content: space-between;
-        margin-bottom: 15px;
+        margin-left: 40px;
+        margin-right: 40px;
         align-content: center;
         padding: 20px 40px 40px 40px;
         border-radius: 15px;
@@ -144,6 +149,7 @@ if (isset($_POST['login'])) {
 </style>
 
 <body class="bg-light">
+    <img src="logo1.png" alt="logo">
     <div class="card-body">
         <h1>Login Admin</h1>
         <form method="POST">
