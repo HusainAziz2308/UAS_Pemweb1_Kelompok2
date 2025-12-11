@@ -61,7 +61,7 @@
             <h2 class="logo">Ruang Kopi</h2>
             <ul>
                 <li><a href="index.php" class="active">Home</a></li>
-                <li><a href="menu-kopi.php">Menu</a></li>
+                <li><a href="pages/menu-kopi.php">Menu</a></li>
                 <li><a href="tentang.php">Tentang</a></li>
                 <li><a href="kontak.php">Kontak</a></li>
                 <li><a href="login.php">Login</a></li>
