@@ -8,30 +8,33 @@ if (!isset($_SESSION['admin'])) {
 }
 
 if (isset($_POST['tambah_kopi'])) {
-    $nama   = $_POST['nama'];
+    $nama   = $_POST['nama_kopi'];
     $desk   = $_POST['deskripsi'];
+    $stok   = $_POST['stok'];
     $harga  = $_POST['harga'];
     $jenis  = $_POST['jenis_kopi'];
 
     $namaFile = $_FILES['gambar']['name'];
     $tmpFile  = $_FILES['gambar']['tmp_name'];
-    $folder   = "../assets/img_kopi/";
+    $folder   = "../assets/img/";
 
     move_uploaded_file($tmpFile, $folder . $namaFile);
 
-    mysqli_query($koneksi, "INSERT INTO kopi VALUES(
-        NULL, '$nama', '$desk', '$harga', '$jenis', '$namaFile'
-    )");
+    mysqli_query($koneksi, "INSERT INTO tb_kopi (nama_kopi, deskripsi, stok, harga, jenis_kopi, gambar)
+    VALUES ('$nama', '$desk', '$stok' '$harga', '$jenis', '$namaFile')");
 }
 
+$dataKopi = mysqli_query($koneksi, "SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 
-$dataKopi = mysqli_query($koneksi, "SELECT * FROM kopi ORDER BY id DESC");
+// pesanan
 $dataPesanan = mysqli_query($koneksi, "
     SELECT p.*, k.nama_kopi, k.harga 
-    FROM tb_pesanan p 
-    LEFT JOIN kopi k ON p.id_kopi = k.id
+    FROM tb_pesanan p
+    LEFT JOIN tb_kopi k ON p.id_kopi = k.id_kopi
     ORDER BY p.id DESC
 ");
+
+// laporan
 $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
