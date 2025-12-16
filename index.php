@@ -1,5 +1,5 @@
 <?php
-    require "../admin/config/koneksi.php";
+    require "admin/config/koneksi.php";
     $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 ?>
 
