@@ -21,7 +21,8 @@ if (isset($_POST['tambah_kopi'])) {
     move_uploaded_file($tmpFile, $folder . $namaFile);
 
     mysqli_query($koneksi, "INSERT INTO tb_kopi (nama_kopi, deskripsi, stok, harga, jenis_kopi, gambar)
-    VALUES ('$nama', '$desk', '$stok' '$harga', '$jenis', '$namaFile')");
+    VALUES ('$nama', '$desk', '$stok' '$harga', '$jenis', '$namaFile')
+    ");
 }
 
 $dataKopi = mysqli_query($koneksi, "SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
