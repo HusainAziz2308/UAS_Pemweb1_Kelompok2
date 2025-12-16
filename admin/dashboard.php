@@ -16,12 +16,12 @@ if (isset($_POST['tambah_kopi'])) {
 
     $namaFile = $_FILES['gambar']['name'];
     $tmpFile  = $_FILES['gambar']['tmp_name'];
-    $folder   = "../assets/img/";
+    $folder = $_SERVER['DOCUMENT_ROOT'] . "/assets/img/";
 
     move_uploaded_file($tmpFile, $folder . $namaFile);
 
     mysqli_query($koneksi, "INSERT INTO tb_kopi (nama_kopi, deskripsi, stok, harga, jenis_kopi, gambar)
-    VALUES ('$nama', '$desk', '$stok' '$harga', '$jenis', '$namaFile')
+    VALUES ('$nama', '$desk', '$stok', '$harga', '$jenis', '$namaFile')
     ");
 }
 
@@ -124,7 +124,6 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
             cursor: pointer;
             margin-top: 10px;
         }
-        
         button:hover {
             scale: 1.04;
             background-color: #964B00;
@@ -224,7 +223,7 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
 
                 <form method="POST" enctype="multipart/form-data">
                     <label>Nama Kopi</label>
-                    <input type="text" name="nama" required>
+                    <input type="text" name="nama_kopi" required>
 
                     <label>Deskripsi</label>
                     <textarea name="deskripsi" required></textarea>
@@ -247,23 +246,23 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
                 <h2>Daftar Kopi</h2>
                 <div class="cards">
                     <?php while ($k = mysqli_fetch_assoc($dataKopi)) { ?>
-                    <div class="card">
-                        <img src="../assets/img_kopi/<?= $k['gambar'] ?>">
-                        <div class="card-body">
-                            <h3>
-                                <?= $k['nama_kopi'] ?>
-                            </h3>
-                            <p>
-                                <?= $k['deskripsi'] ?>
-                            </p>
-                            <p><b>Rp
-                                    <?= number_format($k['harga']) ?>
-                                </b></p>
-                            <p><i>
-                                    <?= $k['jenis_kopi'] ?>
-                                </i></p>
+                        <div class="card">
+                            <img src="/assets/img/<?= $k['gambar'] ?>">
+                            <div class="card-body">
+                                <h3>
+                                    <?= $k['nama_kopi'] ?>
+                                </h3>
+                                <p>
+                                    <?= $k['deskripsi'] ?>
+                                </p>
+                                <p><b>Rp
+                                        <?= number_format($k['harga']) ?>
+                                    </b></p>
+                                <p><i>
+                                        <?= $k['jenis_kopi'] ?>
+                                    </i></p>
+                            </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
             </div>
@@ -281,23 +280,23 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
                     </tr>
 
                     <?php while ($p = mysqli_fetch_assoc($dataPesanan)) { ?>
-                    <tr>
-                        <td>
-                            <?= $p['id'] ?>
-                        </td>
-                        <td>
-                            <?= $p['nama_pelanggan'] ?>
-                        </td>
-                        <td>
-                            <?= $p['nama_kopi'] ?>
-                        </td>
-                        <td>
-                            <?= $p['jumlah'] ?>
-                        </td>
-                        <td>Rp
-                            <?= number_format($p['jumlah'] * $p['harga']) ?>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <?= $p['id'] ?>
+                            </td>
+                            <td>
+                                <?= $p['nama_pelanggan'] ?>
+                            </td>
+                            <td>
+                                <?= $p['nama_kopi'] ?>
+                            </td>
+                            <td>
+                                <?= $p['jumlah'] ?>
+                            </td>
+                            <td>Rp
+                                <?= number_format($p['jumlah'] * $p['harga']) ?>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </table>
             </div>
@@ -313,17 +312,17 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
                     </tr>
 
                     <?php while ($l = mysqli_fetch_assoc($dataLaporan)) { ?>
-                    <tr>
-                        <td>
-                            <?= $l['id'] ?>
-                        </td>
-                        <td>
-                            <?= $l['isi_laporan'] ?>
-                        </td>
-                        <td>
-                            <?= $l['tanggal'] ?>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <?= $l['id'] ?>
+                            </td>
+                            <td>
+                                <?= $l['isi_laporan'] ?>
+                            </td>
+                            <td>
+                                <?= $l['tanggal'] ?>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </table>
             </div>
