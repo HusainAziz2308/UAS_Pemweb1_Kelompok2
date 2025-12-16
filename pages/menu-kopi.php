@@ -82,7 +82,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
         <div class="container">
             <h2 class="logo">Ruang Kopi</h2>
             <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a href="menu-kopi.php" class="active">Menu</a></li>
                 <li><a href="tentang.php">Tentang</a></li>
                 <li><a href="kontak.php">Kontak</a></li>
