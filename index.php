@@ -1,3 +1,8 @@
+<?php
+    require "../admin/config/koneksi.php";
+    $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +10,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Ruang Kopi</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/png">
+    <link rel="stylesheet" href="admin/assets/css/style.css">
+    <link rel="shortcut icon" href="admin/assets/img/favicon1.png" type="image/png">
 </head>
 <style>
-.kopi-card {
+    body {
+        background: #482915;
+        color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    .kopi-card {
         background: #482915;
         border-radius: 12px;
         padding: 15px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         text-align: center;
         transition: 0.3s;
     }
@@ -49,6 +61,7 @@
         border-radius: 8px;
         display: inline-block;
     }
+
     .tb-order:hover {
         background: #ee8f00;
         zoom: 1.05;
@@ -70,14 +83,14 @@
     </nav>
     <section class="gambar-bg-section">
         <div class="container-gambar">
-            <img class="gambar-bg" src="assets/img/bg_kopi_1.jpg" alt="gambar bg">
+            <img class="gambar-bg" src="admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
         </div>
-        
+
         <div class="text-bg">
             <h1>Selamat Datang di Ruang Kopi</h1>
             <p>Tempatnya Inspirasi Rasa</p>
         </div>
-    </section>  
+    </section>
 
     <header class="hero">
         <div class="hero-text">
@@ -113,16 +126,16 @@
         <h2>Produk Kopi Populer</h2>
         <div class="kopi-grid">
             <div class="kopi-card">
-            <img src="assets/img/<?= $row['foto'] ?>" alt="<?= $row['nama_kopi'] ?>">
+                <img src="assets/img/<?= $row['foto'] ?>" alt="<?= $row['nama_kopi'] ?>">
 
-            <h3><?= $row['nama_kopi'] ?></h3>
+                <h3><?= $row['nama_kopi'] ?></h3>
 
-            <p class="harga">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
+                <p class="harga">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
 
-            <p><?= substr($row['deskripsi'], 0, 60) ?>...</p>
+                <p><?= substr($row['deskripsi'], 0, 60) ?>...</p>
 
-            <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
-        </div>
+                <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
+            </div>
         </div>
     </section>
 

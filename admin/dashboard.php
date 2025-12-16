@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../config/koneksi.php";
+require "config/koneksi.php";
 
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
@@ -16,7 +16,7 @@ if (isset($_POST['tambah_kopi'])) {
 
     $namaFile = $_FILES['gambar']['name'];
     $tmpFile  = $_FILES['gambar']['tmp_name'];
-    $folder = $_SERVER['DOCUMENT_ROOT'] . "/assets/img/";
+    $folder = $_SERVER['DOCUMENT_ROOT'] . "assets/img/";
 
     move_uploaded_file($tmpFile, $folder . $namaFile);
 
@@ -45,7 +45,7 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/png">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Dashboard Admin</title>
 
     <style>
@@ -247,7 +247,7 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
                 <div class="cards">
                     <?php while ($k = mysqli_fetch_assoc($dataKopi)) { ?>
                         <div class="card">
-                            <img src="/assets/img/<?= $k['gambar'] ?>">
+                            <img src="assets/img/<?= $k['gambar'] ?>">
                             <div class="card-body">
                                 <h3>
                                     <?= $k['nama_kopi'] ?>

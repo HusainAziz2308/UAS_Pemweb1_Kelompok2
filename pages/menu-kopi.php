@@ -1,5 +1,5 @@
 <?php
-require "config/koneksi.php";
+require "../admin/config/koneksi.php";
 
 $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 ?>
@@ -10,7 +10,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Ruang Kopi</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
 
     <style>
         body {
@@ -92,7 +92,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
     </nav>
     <section class="gambar-bg-section">
         <div class="container-gambar">
-            <img class="gambar-bg" src="assets/img/bg_kopi_1.jpg" alt="gambar bg">
+            <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
         </div>
         
         <div class="text-bg">
@@ -104,7 +104,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 
         <?php while ($row = $query->fetch_assoc()) { ?>
         <div class="kopi-card">
-            <img src="assets/img/<?= $row['foto'] ?>" alt="<?= $row['nama_kopi'] ?>">
+            <img src="../admin/assets/img/<?= $row['foto'] ?>" alt="<?= $row['nama_kopi'] ?>">
 
             <h3><?= $row['nama_kopi'] ?></h3>
 
