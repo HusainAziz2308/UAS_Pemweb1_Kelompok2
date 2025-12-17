@@ -75,9 +75,8 @@
             <ul>
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="pages/menu-kopi.php">Menu</a></li>
-                <li><a href="tentang.php">Tentang</a></li>
-                <li><a href="kontak.php">Kontak</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="pages/tentang.php">Tentang</a></li>
+                <li><a href="admin/login.php">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -147,17 +146,6 @@
             <li>Konfirmasi</li>
             <li>Selesai</li>
         </ol>
-    </section>
-
-    <section class="tentang">
-        <h2>Tentang Kami</h2>
-        <p>Kami menyediakan kopi premium dengan cita rasa terbaik.</p>
-    </section>
-
-    <section class="kontak">
-        <h2>Kontak</h2>
-        <p>WhatsApp: 08xxxxxxx</p>
-        <p>Email: kopi@ruangkopi.com</p>
     </section>
 
     <footer class="footer">
