@@ -1,28 +1,35 @@
 <?php
 session_start();
-require "config/koneksi.php";
+require 'config/koneksi.php';
 
 if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit();
 }
 
-$id = $_GET['id'];
+if (!isset($_GET['id'])) {
+    header("Location: dashboard.php");
+    exit();
+}
 
-// ambil nama gambar
-$data = mysqli_fetch_assoc(
-    mysqli_query($koneksi, "SELECT gambar FROM tb_kopi WHERE id_kopi='$id'")
-);
+$id = (int) $_GET['id'];
 
-if ($data && $data['gambar'] != "") {
-    $file = $_SERVER['DOCUMENT_ROOT'] . "/assets/img/" . $data['gambar'];
-    if (file_exists($file)) {
-        unlink($file);
+$query = mysqli_query($koneksi, "SELECT gambar FROM tb_kopi WHERE id_kopi = '$id'");
+$data  = mysqli_fetch_assoc($query);
+
+if (!$data) {
+    header("Location: dashboard.php");
+    exit();
+}
+
+if (!empty($data['gambar'])) {
+    $path = "assets/img/" . $data['gambar'];
+    if (file_exists($path)) {
+        unlink($path);
     }
 }
 
-// hapus data
-mysqli_query($koneksi, "DELETE FROM tb_kopi WHERE id_kopi='$id'");
+mysqli_query($koneksi, "DELETE FROM tb_kopi WHERE id_kopi = '$id'");
 
 header("Location: dashboard.php");
 exit();
