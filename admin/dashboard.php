@@ -52,7 +52,7 @@
                 <td><?= $no++; ?></td>
                 <td>
                     <?php if ($row['gambar']) { ?>
-                        <img src="assets/img/<?= $row['gambar']; ?>">
+                        <img src="assets/img/<?= $row['gambar']; ?>" max-width="80">
                     <?php } else { ?>
                         Tidak ada gambar
                     <?php } ?>
