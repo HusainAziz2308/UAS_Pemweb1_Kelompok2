@@ -16,16 +16,19 @@ if (isset($_POST['tambah_kopi'])) {
 
     $namaFile = $_FILES['gambar']['name'];
     $tmpFile  = $_FILES['gambar']['tmp_name'];
-    $folder = $_SERVER['DOCUMENT_ROOT'] . "assets/img/";
 
+    $folder = $_SERVER['DOCUMENT_ROOT'] . "/assets/img/";
     move_uploaded_file($tmpFile, $folder . $namaFile);
 
-    mysqli_query($koneksi, "INSERT INTO tb_kopi (nama_kopi, deskripsi, stok, harga, jenis_kopi, gambar)
-    VALUES ('$nama', '$desk', '$stok', '$harga', '$jenis', '$namaFile')
-    ");
-}
+    $sql = "INSERT INTO tb_kopi 
+            (nama_kopi, deskripsi, stok, harga, jenis_kopi, gambar)
+            VALUES 
+            ('$nama','$desk','$stok','$harga','$jenis','$namaFile')";
 
-$dataKopi = mysqli_query($koneksi, "SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
+    if (!mysqli_query($koneksi, $sql)) {
+        die("ERROR SQL: " . mysqli_error($koneksi));
+    }
+}
 
 // pesanan
 $dataPesanan = mysqli_query($koneksi, "
@@ -203,7 +206,7 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
 
             <div id="dashboard" class="section">
                 <h2>Dashboard</h2>
-                <p>Selamat datang Admin! Ini adalah ringkasan singkat:</p>
+                <p>Selamat datang <b><?= $_SESSION['admin'] ?></b>! Ini adalah ringkasan singkat:</p>
 
                 <ul>
                     <li>Total Kopi: <b>
@@ -247,7 +250,7 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
                 <div class="cards">
                     <?php while ($k = mysqli_fetch_assoc($dataKopi)) { ?>
                         <div class="card">
-                            <img src="assets/img/<?= $k['gambar'] ?>">
+                            <img src="/assets/img/<?= $k['gambar'] ?>">
                             <div class="card-body">
                                 <h3>
                                     <?= $k['nama_kopi'] ?>
