@@ -8,18 +8,40 @@ if (!isset($_SESSION['admin'])) {
 }
 
 if (isset($_POST['simpan'])) {
-    $nama   = $_POST['nama_kopi'];
+
+    $nama  = $_POST['nama_kopi'];
     $stok  = $_POST['stok'];
     $harga = $_POST['harga'];
 
-    $gambar = $_FILES['gambar']['name'];
-    $tmp    = $_FILES['gambar']['tmp_name'];
+    $namaFile   = $_FILES['gambar']['name'];
+    $tmpFile    = $_FILES['gambar']['tmp_name'];
+    $sizeFile   = $_FILES['gambar']['size'];
+    $errorFile  = $_FILES['gambar']['error'];
 
-    move_uploaded_file($tmp, "assets/img/" . $gambar);
+    $folder = "assets/img/";
+
+    $allowedExt = ['jpg', 'jpeg', 'png', 'webp'];
+    $ext = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
+
+    if ($errorFile === 4) {
+        die("Gambar wajib diupload!");
+    }
+
+    if (!in_array($ext, $allowedExt)) {
+        die("Format gambar harus JPG, PNG, atau WEBP!");
+    }
+
+    if ($sizeFile > 5 * 1024 * 1024) {
+        die("Ukuran gambar maksimal 5MB!");
+    }
+
+    $namaBaru = uniqid() . "." . $ext;
+
+    move_uploaded_file($tmpFile, $folder . $namaBaru);
 
     mysqli_query($koneksi, "
         INSERT INTO tb_kopi (nama_kopi, stok, harga, gambar)
-        VALUES ('$nama', '$stok', '$harga', '$gambar')
+        VALUES ('$nama', '$stok', '$harga', '$namaBaru')
     ");
 
     header("Location: dashboard.php");
