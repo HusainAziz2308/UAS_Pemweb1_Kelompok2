@@ -31,13 +31,16 @@
     <h1>Dashboard Admin</h1>
     <p>Selamat datang <b><?= $_SESSION['admin']; ?></b></p>
 
+    <a href="edit_kopi.php?id=<?= $k['id_kopi'] ?>">Edit</a> |
+    <a href="hapus_kopi.php?id=<?= $k['id_kopi'] ?>" onclick="return confirm('Yakin hapus kopi ini?')">Hapus</a>
+
     <table>
         <tr>
             <th>No</th>
             <th>Gambar</th>
             <th>Nama Kopi</th>
-            <th>Harga</th>
             <th>Stok</th>
+            <th>Harga</th>
             <th>Aksi</th>
         </tr>
         
