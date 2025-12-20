@@ -7,67 +7,62 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
-$id = $_GET['id'] ?? null;
-if (!$id) {
-    header("Location: dashboard.php");
-    exit();
-}
-
-$query = mysqli_query($koneksi, "SELECT * FROM tb_kopi WHERE id_kopi='$id'");
-$kopi  = mysqli_fetch_assoc($query);
+$id = $_GET['id'];
+$data = mysqli_query($koneksi, "SELECT * FROM tb_kopi WHERE id_kopi='$id'");
+$kopi = mysqli_fetch_assoc($data);
 
 if (!$kopi) {
-    die("Data kopi tidak ditemukan");
+    die("Data tidak ditemukan");
 }
 
+$error = "";
+
 if (isset($_POST['update'])) {
-    $nama  = $_POST['nama_kopi'];
-    $stok  = $_POST['stok'];
-    $harga = $_POST['harga'];
+    $nama   = htmlspecialchars($_POST['nama_kopi']);
+    $stok   = (int) $_POST['stok'];
+    $harga  = (int) $_POST['harga'];
+    $jenis  = $_POST['jenis_kopi'];
 
-    $gambar = $kopi['gambar'];
+    $gambarBaru = $kopi['gambar'];
 
-    if (isset($_POST['hapus_gambar']) && $gambar != "") {
-        if (file_exists("assets/img/" . $gambar)) {
-            unlink("assets/img/" . $gambar);
-        }
-        $gambar = "";
+    if (isset($_POST['hapus_gambar']) && $kopi['gambar']) {
+        unlink("assets/img/" . $kopi['gambar']);
+        $gambarBaru = NULL;
     }
 
-    if (!empty($_FILES['gambar']['name'])) {
+    if ($_FILES['gambar']['error'] !== 4 && !$kopi['gambar']) {
+
         $namaFile = $_FILES['gambar']['name'];
-        $tmp      = $_FILES['gambar']['tmp_name'];
-        $size     = $_FILES['gambar']['size'];
-        $ext      = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
+        $tmpFile  = $_FILES['gambar']['tmp_name'];
+        $sizeFile = $_FILES['gambar']['size'];
 
-        $allowed = ['jpg', 'jpeg', 'png'];
-        if (!in_array($ext, $allowed)) {
-            die("Format gambar harus JPG / PNG");
+        $extValid = ['jpg', 'jpeg', 'png'];
+        $ext = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
+
+        if (!in_array($ext, $extValid)) {
+            $error = "Format gambar harus JPG, JPEG, atau PNG!";
+        } else if ($sizeFile > 5 * 1024 * 1024) {
+            $error = "Ukuran gambar maksimal 5MB!";
+        } else {
+            $gambarBaru = uniqid() . "." . $ext;
+            move_uploaded_file($tmpFile, "assets/img/" . $gambarBaru);
         }
-
-        if ($size > 5 * 1024 * 1024) {
-            die("Ukuran gambar maksimal 5MB");
-        }
-
-        if ($gambar != "" && file_exists("assets/img/" . $gambar)) {
-            unlink("assets/img/" . $gambar);
-        }
-
-        $gambar = time() . "_" . $namaFile;
-        move_uploaded_file($tmp, "assets/img/" . $gambar);
     }
 
-    mysqli_query($koneksi, "
-        UPDATE tb_kopi SET
-        nama_kopi='$nama',
-        stok='$stok',
-        harga='$harga',
-        gambar='$gambar'
-        WHERE id_kopi='$id'
-    ");
+    if ($error === "") {
+        mysqli_query($koneksi, "
+            UPDATE tb_kopi SET
+                nama_kopi='$nama',
+                stok='$stok',
+                harga='$harga',
+                jenis_kopi='$jenis',
+                gambar=" . ($gambarBaru ? "'$gambarBaru'" : "NULL") . "
+            WHERE id_kopi='$id'
+        ");
 
-    header("Location: dashboard.php");
-    exit();
+        header("Location: dashboard.php");
+        exit();
+    }
 }
 ?>
 
@@ -80,9 +75,19 @@ if (isset($_POST['update'])) {
 </head>
 <body>
     <h2>Edit Kopi</h2>
+    <?php if ($error): ?>
+        <p style="color:red;"><?= $error; ?></p>
+    <?php endif; ?>
+
     <form method="POST" enctype="multipart/form-data">
         <label>Nama Kopi</label><br>
-        <input type="text" name="nama_kopi" value="<?= htmlspecialchars($kopi['nama_kopi']); ?>" required><br><br>
+        <input type="text" name="nama_kopi" value="<?= $kopi['nama_kopi']; ?>" required><br><br>
+
+        <label>Jenis Kopi</label><br>
+        <select name="jenis_kopi" required>
+            <option value="Biji_kopi" <?= $kopi['jenis_kopi'] == 'Biji_kopi' ? 'selected' : '' ?>>Biji Kopi</option>
+            <option value="Kopi_jadi" <?= $kopi['jenis_kopi'] == 'Kopi_jadi' ? 'selected' : '' ?>>Kopi Jadi</option>
+        </select><br><br>
 
         <label>Stok</label><br>
         <input type="number" name="stok" value="<?= $kopi['stok']; ?>" required><br><br>
@@ -90,25 +95,20 @@ if (isset($_POST['update'])) {
         <label>Harga</label><br>
         <input type="number" name="harga" value="<?= $kopi['harga']; ?>" required><br><br>
 
-        <label>Gambar Saat Ini</label><br>
         <?php if ($kopi['gambar']) : ?>
+            <p>Gambar saat ini:</p>
             <img src="assets/img/<?= $kopi['gambar']; ?>" style="max-width:80px;"><br>
             <label>
-                <input type="checkbox" name="hapus_gambar" value="1">
-                Hapus gambar
+                <input type="checkbox" name="hapus_gambar"> Hapus gambar
             </label>
         <?php else : ?>
             <p>Tidak ada gambar</p>
         <?php endif; ?>
 
         <br><br>
-
         <label>Upload Gambar Baru</label><br>
         <input type="file" name="gambar">
-        <br>
-        <small>*Upload hanya jika ingin mengganti gambar</small>
-
-        <br><br>
+        <small>*Upload hanya bisa jika gambar lama dihapus</small><br><br>
 
         <button type="submit" name="update">Update</button>
         <a href="dashboard.php">Batal</a>

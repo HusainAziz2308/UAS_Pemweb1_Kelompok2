@@ -45,6 +45,7 @@ if (!$query) {
             <th>No</th>
             <th>Gambar</th>
             <th>Nama Kopi</th>
+            <th>Jenis Kopi</th>
             <th>Stok</th>
             <th>Harga</th>
             <th>Aksi</th>
@@ -64,6 +65,7 @@ if (!$query) {
                     <?php } ?>
                 </td>
                 <td><?= htmlspecialchars($row['nama_kopi']); ?></td>
+                <td><?= $row['jenis_kopi']; ?></td>
                 <td><?= $row['stok']; ?></td>
                 <td>Rp <?= number_format($row['harga']); ?></td>
                 <td>
