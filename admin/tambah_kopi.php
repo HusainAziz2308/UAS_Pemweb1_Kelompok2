@@ -7,44 +7,45 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
+$error = "";
+
 if (isset($_POST['simpan'])) {
+    $nama  = htmlspecialchars($_POST['nama_kopi']);
+    $stok  = (int) $_POST['stok'];
+    $harga = (int) $_POST['harga'];
 
-    $nama  = $_POST['nama_kopi'];
-    $stok  = $_POST['stok'];
-    $harga = $_POST['harga'];
+    $namaGambar = NULL;
 
-    $namaFile   = $_FILES['gambar']['name'];
-    $tmpFile    = $_FILES['gambar']['tmp_name'];
-    $sizeFile   = $_FILES['gambar']['size'];
-    $errorFile  = $_FILES['gambar']['error'];
+    if ($_FILES['gambar']['error'] !== 4) {
 
-    $folder = "assets/img/";
+        $namaFile  = $_FILES['gambar']['name'];
+        $tmpFile   = $_FILES['gambar']['tmp_name'];
+        $sizeFile  = $_FILES['gambar']['size'];
+        $errorFile = $_FILES['gambar']['error'];
 
-    $allowedExt = ['jpg', 'jpeg', 'png', 'webp'];
-    $ext = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
+        $extValid = ['jpg', 'jpeg', 'png'];
+        $ext = strtolower(pathinfo($namaFile, PATHINFO_EXTENSION));
 
-    if ($errorFile === 4) {
-        die("Gambar wajib diupload!");
+        if (!in_array($ext, $extValid)) {
+            $error = "Format gambar harus JPG, JPEG, atau PNG!";
+        } elseif ($sizeFile > 5 * 1024 * 1024) {
+            $error = "Ukuran gambar maksimal 5MB!";
+        } else {
+            $namaGambar = uniqid() . "." . $ext;
+            move_uploaded_file($tmpFile, "assets/img/" . $namaGambar);
+        }
     }
 
-    if (!in_array($ext, $allowedExt)) {
-        die("Format gambar harus JPG, PNG, atau WEBP!");
+    if ($error === "") {
+        mysqli_query($koneksi, "
+            INSERT INTO tb_kopi (nama_kopi, stok, harga, gambar)
+            VALUES ('$nama', '$stok', '$harga', " .
+            ($namaGambar ? "'$namaGambar'" : "NULL") . ")
+        ");
+
+        header("Location: dashboard.php");
+        exit();
     }
-
-    if ($sizeFile > 5 * 1024 * 1024) {
-        die("Ukuran gambar maksimal 5MB!");
-    }
-
-    $namaBaru = uniqid() . "." . $ext;
-
-    move_uploaded_file($tmpFile, $folder . $namaBaru);
-
-    mysqli_query($koneksi, "
-        INSERT INTO tb_kopi (nama_kopi, stok, harga, gambar)
-        VALUES ('$nama', '$stok', '$harga', '$namaBaru')
-    ");
-
-    header("Location: dashboard.php");
 }
 ?>
 
@@ -57,6 +58,11 @@ if (isset($_POST['simpan'])) {
 </head>
 <body>
     <h2>Tambah Kopi</h2>
+
+    <?php if ($error): ?>
+        <div class="error"><?= $error; ?></div>
+    <?php endif; ?>
+
     <form method="POST" enctype="multipart/form-data">
         <label>Nama Kopi</label><br>
         <input type="text" name="nama_kopi" required><br><br>
@@ -67,11 +73,30 @@ if (isset($_POST['simpan'])) {
         <label>Harga</label><br>
         <input type="number" name="harga" required><br><br>
 
-        <label>Gambar</label><br>
-        <input type="file" name="gambar" required><br><br>
+        <label>Upload Gambar (Opsional)</label><br>
+        <input type="file" name="gambar" id="gambar" accept="image/*">
 
+        <!-- PREVIEW -->
+        <div class="preview">
+            <img id="previewImg" style="display:none;">
+        </div>
+
+        <br>
         <button type="submit" name="simpan">Simpan</button>
         <a href="dashboard.php">Batal</a>
     </form>
 </body>
+<script>
+    document.getElementById("gambar").addEventListener("change", function(e) {
+        const img = document.getElementById("previewImg");
+        const file = e.target.files[0];
+
+        if (file) {
+            img.src = URL.createObjectURL(file);
+            img.style.display = "block";
+        } else {
+            img.style.display = "none";
+        }
+    });
+</script>
 </html>
