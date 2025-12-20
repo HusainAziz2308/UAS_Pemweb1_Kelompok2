@@ -30,7 +30,7 @@
     <a href="logout.php" class="logout">Logout</a>
     <h1>Dashboard Admin</h1>
     <p>Selamat datang <b><?= $_SESSION['admin']; ?></b></p>
-
+    <a href="tambah_kopi.php">+ Tambah Kopi</a> |
     <a href="edit_kopi.php?id=<?= $k['id_kopi'] ?>">Edit</a> |
     <a href="hapus_kopi.php?id=<?= $k['id_kopi'] ?>" onclick="return confirm('Yakin hapus kopi ini?')">Hapus</a>
 
