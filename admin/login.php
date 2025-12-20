@@ -27,6 +27,7 @@ if (isset($_POST['login'])) {
         if ($data) {
             if ($password === $data['password']) {
                 $_SESSION['admin'] = $data['username'];
+                $_SESSION['nama_admin'] = $admin['nama_admin'];
                 header("Location: dashboard.php");
                 exit();
             } else {
