@@ -239,7 +239,10 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
                         <option value="Biji_kopi">Biji Kopi</option>
                         <option value="Kopi_jadi">Kopi Jadi</option>
                     </select>
-
+                    
+                    <label>Stok</label>
+                    <input type="number" name="stok" required>
+                    
                     <label>Upload Gambar</label>
                     <input type="file" name="gambar" required>
 
@@ -252,18 +255,11 @@ $dataLaporan = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY id DESC
                         <div class="card">
                             <img src="/assets/img/<?= $k['gambar'] ?>">
                             <div class="card-body">
-                                <h3>
-                                    <?= $k['nama_kopi'] ?>
-                                </h3>
-                                <p>
-                                    <?= $k['deskripsi'] ?>
-                                </p>
-                                <p><b>Rp
-                                        <?= number_format($k['harga']) ?>
-                                    </b></p>
-                                <p><i>
-                                        <?= $k['jenis_kopi'] ?>
-                                    </i></p>
+                                <h3><?= $k['nama_kopi'] ?></h3>
+                                <p><?= $k['deskripsi'] ?></p>
+                                <p><b>Rp <?= number_format($k['harga']) ?></b></p>
+                                <p><b>Stok: <?= $k['stok'] ?></b></p>
+                                <p><i><?= $k['jenis_kopi'] ?></i></p>
                             </div>
                         </div>
                     <?php } ?>
