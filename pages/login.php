@@ -45,6 +45,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login User | Ruang Kopi</title>
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="../admin/assets/css/login.css">
 </head>
 
