@@ -45,6 +45,27 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <title>Login User | Ruang Kopi</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <style>
+        body {
+            /*background-color: #0080ffff;*/
+            background-image: url('../img/bg_kopi_1.jpg');
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: brightness(60%);
+            background-blend-mode: darken;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            max-width: 400px;
+        }
+    </style>
 </head>
 
 <body>

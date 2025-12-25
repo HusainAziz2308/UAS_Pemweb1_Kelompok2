@@ -43,10 +43,32 @@ if (isset($_POST['register'])) {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <title>Register User</title>
+    <title>Register User | Ruang Kopi</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <style>
+        body {
+            /*background-color: #0080ffff;*/
+            background-image: url('../img/bg_kopi_1.jpg');
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: brightness(60%);
+            background-blend-mode: darken;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            max-width: 400px;
+        }
+    </style>
 </head>
 
 <body>
@@ -75,9 +97,9 @@ if (isset($_POST['register'])) {
             <button class="tb-login" name="register">Daftar</button>
 
             <?php if ($pesan): ?>
-            <div class="alert-login">
-                <?= $pesan ?>
-            </div>
+                <div class="alert-login">
+                    <?= $pesan ?>
+                </div>
             <?php endif; ?>
         </form>
 
