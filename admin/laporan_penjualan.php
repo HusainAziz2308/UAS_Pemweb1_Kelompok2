@@ -18,6 +18,7 @@ if (!$query) {
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Laporan Penjualan</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <style>

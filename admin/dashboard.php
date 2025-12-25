@@ -20,7 +20,7 @@ if (!$query) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="assets/img/favicon1.png" type="image/png">
+    <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Dashboard Admin</title>
     <style>
         .img-kopi {
