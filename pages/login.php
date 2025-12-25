@@ -48,7 +48,7 @@ if (isset($_POST['login'])) {
     <style>
         body {
             /*background-color: #0080ffff;*/
-            background-image: url('../img/bg_kopi_1.jpg');
+            background-image: url('../admin/assets/img/bg_kopi_1.jpg');
             background-size: cover;
             background-position: center;
             backdrop-filter: brightness(60%);
