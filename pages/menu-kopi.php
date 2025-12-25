@@ -6,6 +6,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +36,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
             background: #482915;
             border-radius: 12px;
             padding: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             transition: 0.3s;
         }
@@ -71,6 +72,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
             border-radius: 8px;
             display: inline-block;
         }
+
         .tb-order:hover {
             background: #ee8f00;
             zoom: 1.05;
@@ -93,29 +95,33 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
         <div class="container-gambar">
             <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
         </div>
-        
         <div class="text-bg">
             <h2>Daftar Menu Kopi</h2>
             <p>Pilih Kopimu disini</p>
         </div>
-    </section>  
+    </section>
     <div class="kopi-grid">
 
         <?php while ($row = $query->fetch_assoc()) { ?>
-        <div class="kopi-card">
-            <img src="../admin/assets/img/<?= $row['foto'] ?>" alt="<?= $row['nama_kopi'] ?>">
+            <div class="kopi-card">
+                <?php if ($row['gambar']) { ?>
+                    <img src="../admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
+                <?php } else { ?>
+                    Tidak ada gambar
+                <?php } ?>
 
-            <h3><?= $row['nama_kopi'] ?></h3>
+                <h3><?= $row['nama_kopi'] ?></h3>
 
-            <p class="harga">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
+                <p class="harga">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
 
-            <p><?= substr($row['deskripsi'], 0, 60) ?>...</p>
+                <p><?= substr($row['deskripsi'], 0, 60) ?>...</p>
 
-            <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
-        </div>
+                <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
+            </div>
         <?php } ?>
 
     </div>
 
 </body>
+
 </html>
