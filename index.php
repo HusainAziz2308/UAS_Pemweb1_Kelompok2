@@ -76,7 +76,7 @@
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="pages/menu-kopi.php">Menu</a></li>
                 <li><a href="pages/tentang.php">Tentang</a></li>
-                <li><a href="admin/login.php">Login</a></li>
+                <li><a href="login.php">Login/Daftar</a></li>
             </ul>
         </div>
     </nav>
@@ -125,7 +125,11 @@
         <h2>Produk Kopi Populer</h2>
         <div class="kopi-grid">
             <div class="kopi-card">
-                <img src="assets/img/<?= $row['foto'] ?>" alt="<?= $row['nama_kopi'] ?>">
+                <?php if ($row['gambar']) { ?>
+                    <img src="../admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
+                <?php } else { ?>
+                    Tidak ada gambar
+                <?php } ?>
 
                 <h3><?= $row['nama_kopi'] ?></h3>
 

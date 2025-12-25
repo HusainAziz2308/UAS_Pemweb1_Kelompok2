@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Tentang | Ruang Kopi</title>
+    <style>
+        body {
+            background: #482915;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -15,7 +23,7 @@
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="menu-kopi.php">Menu</a></li>
                 <li><a href="tentang.php" class="active">Tentang</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="login.php">Login/Daftar</a></li>
             </ul>
         </div>
     </nav>
@@ -23,7 +31,6 @@
         <div class="container-gambar">
             <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
         </div>
-        
         <div class="text-bg">
             <h1>Tentang Kami</h1>
             <p>Kami adalah kedai kopi yang menyediakan kopi berkualitas tinggi dengan cita rasa unik dan pengalaman yang menyenangkan.</p>
