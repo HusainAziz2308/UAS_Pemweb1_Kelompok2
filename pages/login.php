@@ -43,29 +43,9 @@ if (isset($_POST['login'])) {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login User | Ruang Kopi</title>
-    <link rel="stylesheet" href="../admin/assets/css/style.css">
-    <style>
-        body {
-            /*background-color: #0080ffff;*/
-            background-image: url('../admin/assets/img/bg_kopi_1.jpg');
-            background-size: cover;
-            background-position: center;
-            backdrop-filter: brightness(60%);
-            background-blend-mode: darken;
-
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        img {
-            max-width: 400px;
-        }
-    </style>
+    <link rel="stylesheet" href="../admin/assets/css/login.css">
 </head>
 
 <body>
