@@ -7,66 +7,59 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
-$data = mysqli_query($koneksi, "
-    SELECT 
-        p.id,
-        p.tanggal_pesanan,
-        k.nama_kopi,
-        p.jumlah,
-        k.harga,
-        (p.jumlah * k.harga) AS total
-    FROM tb_pesanan p
-    JOIN tb_kopi k ON p.id_kopi = k.id_kopi
-    ORDER BY p.tanggal_pesanan DESC
-");
+$query = mysqli_query($koneksi, "SELECT * FROM tb_laporan ORDER BY tanggal DESC");
 
-
-$totalQ = mysqli_query($koneksi, "
-    SELECT SUM(p.jumlah * k.harga) AS total_penjualan
-    FROM tb_pesanan p
-    JOIN tb_kopi k ON p.id_kopi = k.id_kopi
-");
-$total = mysqli_fetch_assoc($totalQ);
+if (!$query) {
+    die("Query error: " . mysqli_error($koneksi));
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Laporan Penjualan</title>
+    <title>Laporan Penjualan</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: #eee;
+        }
+    </style>
 </head>
-
 <body>
-    <h2>Laporan Penjualan</h2>
 
-    <p><b>Total Penjualan:</b> Rp <?= number_format($total['total_penjualan'] ?? 0); ?></p>
+<h2>Laporan Penjualan</h2>
+<a href="dashboard.php">← Kembali ke Dashboard</a>
 
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>No</th>
-            <th>Tanggal</th>
-            <th>Nama Kopi</th>
-            <th>Jumlah</th>
-            <th>Harga</th>
-            <th>Total</th>
-        </tr>
+<table>
+    <tr>
+        <th>No</th>
+        <th>Tanggal</th>
+        <th>Total Penjualan</th>
+        <th>Keterangan</th>
+    </tr>
 
-        <?php
-        $no = 1;
-        while ($row = mysqli_fetch_assoc($data)) {
-        ?>
-            <tr>
-                <td><?= $no++; ?></td>
-                <td><?= $row['tanggal_pesanan']; ?></td>
-                <td><?= $row['nama_kopi']; ?></td>
-                <td><?= $row['jumlah']; ?></td>
-                <td>Rp <?= number_format($row['harga']); ?></td>
-                <td>Rp <?= number_format($row['total']); ?></td>
-            </tr>
-        <?php } ?>
-    </table>
+    <?php
+    $no = 1;
+    while ($row = mysqli_fetch_assoc($query)) :
+    ?>
+    <tr>
+        <td><?= $no++; ?></td>
+        <td><?= $row['tanggal']; ?></td>
+        <td>Rp <?= number_format($row['total_penjualan']); ?></td>
+        <td><?= $row['keterangan']; ?></td>
+    </tr>
+    <?php endwhile; ?>
+</table>
+
 </body>
-
 </html>
