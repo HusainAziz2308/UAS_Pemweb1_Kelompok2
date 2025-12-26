@@ -155,12 +155,12 @@ body {
 }
 
 @media (min-width: 768px) {
-    .visi-misi-container {
+    .kanan-kiri-container {
         display: flex;
         gap: 40px;
         margin-bottom: 50px;
     }
-    .visi-box, .misi-box {
+    .item-box {
         flex: 1;
     }
 }
