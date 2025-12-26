@@ -157,7 +157,7 @@
 
                     <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
                 </div>
-                <a href="pages/menu-kopi.html" class="tb-menu">Lihat Menu Kopi</a>
+                <a href="menu-kopi.html" class="tb-menu">Lihat Menu Kopi</a>
             </div>
         </section>
 
