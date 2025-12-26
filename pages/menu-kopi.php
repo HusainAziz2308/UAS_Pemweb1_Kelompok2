@@ -13,6 +13,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
     <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Menu | Ruang Kopi</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="../admin/assets/css/content.css">
 
     <style>
         body {
