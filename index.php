@@ -66,6 +66,16 @@
         background: #ee8f00;
         zoom: 1.05;
     }
+
+    .tb-menu {
+        text-decoration: none;
+        padding: 10px 15px;
+        background: #e67e22;
+        color: #fff;
+        border-radius: 8px;
+        display: inline-block;
+        margin-top: 20px;
+    }
 </style>
 
 <body>
@@ -76,7 +86,7 @@
                 <li><a href="index.php" class="active">Home</a></li>
                 <li><a href="pages/menu-kopi.php">Menu</a></li>
                 <li><a href="pages/tentang.php">Tentang</a></li>
-                <li><a href="login.php">Login/Daftar</a></li>
+                <li><a href="pages/login.php">Login/Daftar</a></li>
             </ul>
         </div>
     </nav>
@@ -92,65 +102,75 @@
     </section>
 
     <header class="hero">
-        <div class="hero-text">
-            <h1>Selamat Datang di Kedai Kopi Kami</h1>
-            <p>Temukan racikan kopi terbaik untuk menemani harimu.</p>
-            <a href="menu-kopi.html" class="btn-primary">Lihat Menu Kopi</a>
-        </div>
+
     </header>
+    <main class="container content">
+        <section class="section" id="selamat-datang">
+            <div class="container">
+                <h1>Selamat Datang di Kedai Kopi Kami</h1>
+                <p>Temukan racikan kopi terbaik untuk menemani harimu.</p>
+            </div>
+        </section>
+        <section class="section" id="mengapa-kopi">
+            <div class="container">
+                <h2>Mengapa Memilih Kopi Kami?</h2>
+                <div class="kanan-kiri-container">
+                    <div class="item-box">
+                        <h3>Biji Kopi Premium</h3>
+                        <p>Kami memilih biji kopi lokal terbaik untuk rasa yang maksimal.</p>
+                    </div>
 
-    <section class="features">
-        <div class="container">
-            <h2>Mengapa Memilih Kopi Kami?</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <h3>Biji Kopi Premium</h3>
-                    <p>Kami memilih biji kopi lokal terbaik untuk rasa yang maksimal.</p>
-                </div>
+                    <div class="item-box">
+                        <h3>Proses Modern</h3>
+                        <p>Dibuat dengan teknik barista profesional.</p>
+                    </div>
 
-                <div class="feature-item">
-                    <h3>Proses Modern</h3>
-                    <p>Dibuat dengan teknik barista profesional.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h3>Harga Terjangkau</h3>
-                    <p>Kualitas tinggi dengan harga yang ramah di kantong.</p>
+                    <div class="item-box">
+                        <h3>Harga Terjangkau</h3>
+                        <p>Kualitas tinggi dengan harga yang ramah di kantong.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="produk">
-        <h2>Produk Kopi Populer</h2>
-        <div class="kopi-grid">
-            <div class="kopi-card">
-                <?php if ($row['gambar']) { ?>
+        <section class="section" id="produk-kopi">
+            <h2>Produk Kopi Populer</h2>
+            <div class="kopi-grid">
+                <div class="kopi-card">
+                    <?php if ($row['gambar']) { ?>
                     <img src="../admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
-                <?php } else { ?>
+                    <?php } else { ?>
                     Tidak ada gambar
-                <?php } ?>
+                    <?php } ?>
 
-                <h3><?= $row['nama_kopi'] ?></h3>
+                    <h3>
+                        <?= $row['nama_kopi'] ?>
+                    </h3>
 
-                <p class="harga">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
+                    <p class="harga">Rp
+                        <?= number_format($row['harga'], 0, ',', '.') ?>
+                    </p>
 
-                <p><?= substr($row['deskripsi'], 0, 60) ?>...</p>
+                    <p>
+                        <?= substr($row['deskripsi'], 0, 60) ?>...
+                    </p>
 
-                <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
+                    <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
+                </div>
+                <a href="pages/menu-kopi.html" class="tb-menu">Lihat Menu Kopi</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="pemesanan">
-        <h2>Cara Pemesanan</h2>
-        <ol>
-            <li>Pilih kopi</li>
-            <li>Isi form pemesanan</li>
-            <li>Konfirmasi</li>
-            <li>Selesai</li>
-        </ol>
-    </section>
+        <section class="section" id="cara-pemesanan">
+            <h2>Cara Pemesanan</h2>
+            <ol>
+                <li>Pilih kopi</li>
+                <li>Isi form pemesanan</li>
+                <li>Konfirmasi</li>
+                <li>Selesai</li>
+            </ol>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="container">

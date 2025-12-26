@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
         }
     </style>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="container">
@@ -27,29 +29,71 @@
             </ul>
         </div>
     </nav>
+
     <section class="gambar-bg-section">
-        <div class="container-gambar">
-            <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
-        </div>
+        <div class="bg-overlay"></div> <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
         <div class="text-bg">
             <h1>Tentang Kami</h1>
-            <p>Kami adalah kedai kopi yang menyediakan kopi berkualitas tinggi dengan cita rasa unik dan pengalaman yang menyenangkan.</p>
+            <p>Kami adalah kedai kopi yang menyediakan kopi berkualitas tinggi dengan cita rasa unik dan pengalaman yang
+                menyenangkan.</p>
         </div>
     </section>
-    <div class="container">
-        <h2>Visi Kami</h2>
-        <p>Menjadi kedai kopi terkemuka yang dikenal karena kualitas kopi dan pelayanan terbaik.</p>
 
-        <h2>Misi Kami</h2>
-        <ul>
-            <li>Menyajikan kopi berkualitas tinggi dari biji kopi pilihan.</li>
-            <li>Menciptakan suasana yang nyaman dan ramah bagi pelanggan.</li>
-            <li>Mendukung petani kopi lokal dengan membeli biji kopi secara langsung.</li>
-            <li>Terus berinovasi dalam menyajikan berbagai varian biji kopi.</li>
-        </ul>
+    <main class="container content">
+        <section class="section" id="tentang">
+            <div class="kanan-kiri-container">
+                <div class="item-box">
+                    <h2>Visi Kami</h2>
+                    <p>Menjadi kedai kopi terkemuka yang dikenal karena kualitas kopi dan pelayanan terbaik.</p>
+                </div>
 
-        <h2>Tim Kami</h2>
-        <p>Kami terdiri dari barista berpengalaman dan staf yang berdedikasi untuk memberikan pelayanan terbaik kepada pelanggan kami.</p>
-    </div>
+                <div class="item-box">
+                    <h2>Misi Kami</h2>
+                    <ul>
+                        <li>Menyajikan kopi berkualitas tinggi dari biji kopi pilihan.</li>
+                        <li>Menciptakan suasana yang nyaman dan ramah bagi pelanggan.</li>
+                        <li>Mendukung petani kopi lokal dengan membeli biji kopi secara langsung.</li>
+                        <li>Terus berinovasi dalam menyajikan berbagai varian biji kopi.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h2>Tim Kami</h2>
+                <p style="text-align: center; margin-bottom: 30px;">
+                    Kami terdiri dari barista berpengalaman dan staf yang berdedikasi untuk memberikan pelayanan terbaik
+                    kepada pelanggan kami.
+                </p>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="gambar-tim">
+                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Barista+1"
+                                alt="Fauzi">
+                        </div>
+                        <h3>M. Fauzian Afshor</h3>
+                        <p class="jabatan">Head Barista</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="gambar-tim">
+                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Manager" alt="Husain">
+                        </div>
+                        <h3>Husain Aziz Al Rosyid</h3>
+                        <p class="jabatan">Operational Manager</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="gambar-tim">
+                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Roaster" alt="Nukhi">
+                        </div>
+                        <h3>Nukhi Alvin Rahmahdani</h3>
+                        <p class="jabatan">Coffee Roaster</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
+
 </html>
