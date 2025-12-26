@@ -68,8 +68,7 @@
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="gambar-tim">
-                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Barista+1"
-                                alt="Fauzi">
+                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Barista+1" alt="Fauzi">
                         </div>
                         <h3>M. Fauzian Afshor</h3>
                         <p class="jabatan">Head Barista</p>
@@ -92,6 +91,42 @@
                     </div>
                 </div>
             </div>
+
+            <div class="kanan-kiri-container">
+                <div class="kiri-container">
+                    <h2>Lokasi Kami</h2>
+                    <p>Kami berlokasi di pusat kota, mudah diakses dan menyediakan tempat yang nyaman untuk bersantai
+                        dan
+                        menikmati kopi.</p>
+                    <h2>Jam Buka</h2>
+                    <p>Kami buka setiap hari dari pukul 08.00 pagi hingga 10.00 malam.</p>
+                </div>
+                <div class="kanan-container">
+                    <h2>Peta</h2>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.8057075666125!2d112.27579047357602!3d-7.545164174485333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e786bb47801c3f7%3A0xe5236f7510442415!2sUnipdu%20Jombang!5e1!3m2!1sen!2sid!4v1766734635476!5m2!1sen!2sid"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="container">
+                <h2>Kontak Kami</h2>
+                <div class="kanan-kiri-container">
+                    <div class="item-box">
+                        <h3>Email</h3>
+                        <p>info@kopi.com</p>
+                    </div>
+                    <div class="item-box">
+                        <h3>Telepon</h3>
+                        <p>(0351) 123456</p>
+                    </div>
+                    <div class="item-box">
+                        <h3>Media Sosial</h3>
+                        <p>Instagram: @ruangkopi</p>
+                        <p>Facebook: Ruang Kopi</p>
+                    </div>
+                </div>
+
         </section>
     </main>
 </body>
