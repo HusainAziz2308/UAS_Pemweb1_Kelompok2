@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="../admin/assets/css/content.css">
+    <link rel="stylesheet" href="../admin/assets/css/footer.css">
     <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Tentang | Ruang Kopi</title>
     <style>
@@ -44,12 +45,12 @@
         <section class="section" id="tentang">
             <div class="kanan-kiri-container">
                 <div class="item-box">
-                    <h2>Visi Kami</h2>
+                    <h2>🎯 Visi Kami</h2>
                     <p>Menjadi kedai kopi terkemuka yang dikenal karena kualitas kopi dan pelayanan terbaik.</p>
                 </div>
 
                 <div class="item-box">
-                    <h2>Misi Kami</h2>
+                    <h2>🚀 Misi Kami</h2>
                     <ul>
                         <li>Menyajikan kopi berkualitas tinggi dari biji kopi pilihan.</li>
                         <li>Menciptakan suasana yang nyaman dan ramah bagi pelanggan.</li>
@@ -69,7 +70,7 @@
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="gambar-tim">
-                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Barista+1" alt="Fauzi">
+                            <img src="../admin/assets/img/fauzi.jpeg" alt="Fauzi">
                         </div>
                         <h3>M. Fauzian Afshor</h3>
                         <p class="jabatan">Head Barista</p>
@@ -77,7 +78,7 @@
 
                     <div class="team-member">
                         <div class="gambar-tim">
-                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Manager" alt="Husain">
+                            <img src="../admin/assets/img/husain.jpeg" alt="Husain">
                         </div>
                         <h3>Husain Aziz Al Rosyid</h3>
                         <p class="jabatan">Operational Manager</p>
@@ -85,7 +86,7 @@
 
                     <div class="team-member">
                         <div class="gambar-tim">
-                            <img src="https://placehold.co/150x150/5a351a/d37f00?text=Foto+Roaster" alt="Nukhi">
+                            <img src="../admin/assets/img/nukhi.jpeg" alt="Nukhi">
                         </div>
                         <h3>Nukhi Alvin Rahmahdani</h3>
                         <p class="jabatan">Coffee Roaster</p>
@@ -95,15 +96,15 @@
 
             <div class="kanan-kiri-container">
                 <div class="kiri-container">
-                    <h2>Lokasi Kami</h2>
+                    <h2>📍 Lokasi Kami</h2>
                     <p>Kami berlokasi di pusat kota, mudah diakses dan menyediakan tempat yang nyaman untuk bersantai
                         dan
                         menikmati kopi.</p>
-                    <h2>Jam Buka</h2>
+                    <h2>🕐 Jam Buka</h2>
                     <p>Kami buka setiap hari dari pukul 08.00 pagi hingga 10.00 malam.</p>
                 </div>
                 <div class="kanan-container">
-                    <h2>Peta</h2>
+                    <h2>🗺️ Peta</h2>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.8057075666125!2d112.27579047357602!3d-7.545164174485333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e786bb47801c3f7%3A0xe5236f7510442415!2sUnipdu%20Jombang!5e1!3m2!1sen!2sid!4v1766734635476!5m2!1sen!2sid"
                         width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
@@ -111,25 +112,58 @@
                 </div>
             </div>
             <div class="container">
-                <h2>Kontak Kami</h2>
+                <h2>📖 Kontak Kami</h2>
                 <div class="kanan-kiri-container">
                     <div class="item-box">
-                        <h3>Email</h3>
+                        <h3>📩 Email</h3>
                         <p>info@kopi.com</p>
                     </div>
                     <div class="item-box">
-                        <h3>Telepon</h3>
+                        <h3>📞 Telepon</h3>
                         <p>(0351) 123456</p>
                     </div>
                     <div class="item-box">
-                        <h3>Media Sosial</h3>
-                        <p>Instagram: @ruangkopi</p>
-                        <p>Facebook: Ruang Kopi</p>
+                        <h3>🔍 Media Sosial</h3>
+                        <p>📸 Instagram: @ruangkopi</p>
+                        <p>👥 Facebook: Ruang Kopi</p>
                     </div>
                 </div>
 
         </section>
     </main>
+
+    <footer class="footer-modern">
+        <div class="footer-overlay">
+            <div class="footer-content">
+
+                <div class="footer-brand">
+                    <h2>Ruang Kopi</h2>
+                    <p>Tempat terbaik untuk menikmati kopi, berbagi cerita, dan menemukan inspirasi.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <a href="../index.php">Home</a>
+                    <a href="menu-kopi.php">Menu</a>
+                    <a href="tentang.php">Tentang</a>
+                    <a href="login.php">Login / Daftar</a>
+                </div>
+
+                <div class="footer-info">
+                    <h4>Informasi</h4>
+                    <p>📍 Jl. Kopi Nusantara No.10</p>
+                    <p>📞 (0351) 123456</p>
+                    <p>✉️ info@kopi.com</p>
+                </div>
+
+            </div>
+
+            <div class="footer-copy">
+                <p>© 2025 Ruang Kopi — Crafted with ☕</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 </html>

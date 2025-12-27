@@ -12,6 +12,7 @@
     <title>Home | Ruang Kopi</title>
     <link rel="stylesheet" href="admin/assets/css/style.css">
     <link rel="stylesheet" href="admin/assets/css/content.css">
+    <link rel="stylesheet" href="admin/assets/css/footer.css">
     <link rel="shortcut icon" href="admin/assets/icon/favicon1.png" type="image/png">
 </head>
 <style>
@@ -158,7 +159,7 @@
 
                     <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
                 </div>
-                <a href="pages/menu-kopi.php" class="tb-menu">Lihat Menu Kopi</a>
+                <a href="menu-kopi.html" class="tb-menu">Lihat Menu Kopi</a>
             </div>
         </section>
 
@@ -173,16 +174,38 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Ruang Kopi. All rights reserved.</p>
-            <div class="social-media">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
+    <footer class="footer-modern">
+        <div class="footer-overlay">
+            <div class="footer-content">
+
+                <div class="footer-brand">
+                    <h2>Ruang Kopi</h2>
+                    <p>Tempat terbaik untuk menikmati kopi, berbagi cerita, dan menemukan inspirasi.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Navigasi</h4>
+                    <a href="index.php">Home</a>
+                    <a href="pages/menu-kopi.php">Menu</a>
+                    <a href="pages/tentang.php">Tentang</a>
+                    <a href="pages/login.php">Login / Daftar</a>
+                </div>
+
+                <div class="footer-info">
+                    <h4>Informasi</h4>
+                    <p>📍 Jl. Kopi Nusantara No.10</p>
+                    <p>📞 (0351) 123456</p>
+                    <p>✉️ info@kopi.com</p>
+                </div>
+
+            </div>
+
+            <div class="footer-copy">
+                <p>© 2025 Ruang Kopi — Crafted with ☕</p>
             </div>
         </div>
     </footer>
+
 </body>
 
 </html>
