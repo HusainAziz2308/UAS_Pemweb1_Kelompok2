@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
     $stmt->close();
 
     if ($user) {
-        if (password_verify($password, $user['password'])) {
+        if ($password === $user['password']) {
             $_SESSION['user'] = $user['username'];
             $_SESSION['nama_user'] = $user['nama'];
             $_SESSION['email_user'] = $user['email'];
