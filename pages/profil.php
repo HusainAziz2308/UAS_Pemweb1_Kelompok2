@@ -43,6 +43,8 @@ if (isset($_POST['update'])) {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Profil Saya</title>
 </head>
 
@@ -72,6 +74,11 @@ if (isset($_POST['update'])) {
 
         <button type="submit" name="update">Update Profil</button>
     </form>
+    <div class="aksi">
+        <a href="ganti-password.php">🔒 Ganti Password</a> |
+        <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">🚪 Logout</a>
+    </div>
+
 
     <hr>
 

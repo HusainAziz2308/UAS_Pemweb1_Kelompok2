@@ -10,33 +10,39 @@ if (isset($_POST['register'])) {
     $nama     = trim($_POST['nama']);
     $password = trim($_POST['password']);
 
-    $cekUser = $koneksi->prepare("SELECT username FROM tb_user WHERE username = ?");
-    $cekUser->bind_param("s", $username);
-    $cekUser->execute();
-    $cekUser->store_result();
-
-    if ($cekUser->num_rows > 0) {
-        $pesan = "Username sudah digunakan!";
+    if ($username == "" || $email == "" || $nama == "" || $password == "") {
+        $pesan = "Semua field wajib diisi!";
     } else {
-        $cekEmail = $koneksi->prepare("SELECT email FROM tb_user WHERE email = ?");
-        $cekEmail->bind_param("s", $email);
-        $cekEmail->execute();
-        $cekEmail->store_result();
+        $cekUser = $koneksi->prepare("SELECT username FROM tb_user WHERE username = ?");
+        $cekUser->bind_param("s", $username);
+        $cekUser->execute();
+        $cekUser->store_result();
 
-        if ($cekEmail->num_rows > 0) {
-            $pesan = "Email sudah digunakan!";
+        if ($cekUser->num_rows > 0) {
+            $pesan = "Username sudah digunakan!";
         } else {
-            $stmt = $koneksi->prepare("
-                INSERT INTO tb_user (username, email, nama, password)
-                VALUES (?, ?, ?, ?)
-            ");
-            $stmt->bind_param("ssss", $username, $email, $nama, $password);
-            $stmt->execute();
-            $stmt->close();
+            $cekEmail = $koneksi->prepare("SELECT email FROM tb_user WHERE email = ?");
+            $cekEmail->bind_param("s", $email);
+            $cekEmail->execute();
+            $cekEmail->store_result();
 
-            header("Location: login.php");
-            exit();
+            if ($cekEmail->num_rows > 0) {
+                $pesan = "Email sudah digunakan!";
+            } else {
+                $stmt = $koneksi->prepare("
+                    INSERT INTO tb_user (username, email, nama, password)
+                    VALUES (?, ?, ?, ?)
+                ");
+                $stmt->bind_param("ssss", $username, $email, $nama, $password);
+                $stmt->execute();
+                $stmt->close();
+
+                header("Location: login.php");
+                exit();
+            }
+            $cekEmail->close();
         }
+        $cekUser->close();
     }
 }
 ?>
