@@ -45,6 +45,7 @@ if (isset($_POST['update'])) {
     <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Profil User | Ruang Kopi</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="../admin/assets/css/profil.css">
 </head>
 
 <body>
