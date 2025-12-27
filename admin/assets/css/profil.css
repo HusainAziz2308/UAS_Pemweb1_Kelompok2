@@ -1,0 +1,93 @@
+body {
+    background-image: url('../admin/assets/img/bg_kopi_1.jpg');
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: brightness(60%);
+    background-blend-mode: darken;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.card-body {
+    max-width: 360px;
+    width: 100%;
+    padding: 25px 35px 35px;
+    border-radius: 15px;
+    border: 2px solid #ffffffaa;
+    background: transparent;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 10px 20px #00000055;
+}
+
+.card-body h1 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 15px;
+}
+
+.form-login input {
+    background: transparent;
+    border: 3px solid #fff;
+    border-radius: 40px;
+    padding: 15px 20px;
+    width: 100%;
+    color: #fff;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.form-login input[readonly] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-login input::placeholder {
+    color: #ffffffce;
+}
+
+.tb-login {
+    width: 100%;
+    background-color: #eb7500ff;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.tb-login:hover {
+    background-color: #964B00;
+    transition: 0.3s;
+}
+
+.alert-login {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ddffdd;
+    border-left: 6px solid #4CAF50;
+    border-radius: 5px;
+    color: #2e7d32;
+    text-align: center;
+}
+
+.aksi {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.aksi a {
+    color: #ffb347;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.aksi a:hover {
+    text-decoration: underline;
+}
