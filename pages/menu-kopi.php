@@ -10,6 +10,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Menu | Ruang Kopi</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="../admin/assets/css/content.css">
@@ -81,7 +82,6 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar">
         <div class="container">
@@ -90,7 +90,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="menu-kopi.php" class="active">Menu</a></li>
                 <li><a href="tentang.php">Tentang</a></li>
-                <li><a href="login.php">Login</a></li>
+                <li><a href="login.php">Login/Daftar</a></li>
             </ul>
         </div>
     </nav>
@@ -98,7 +98,6 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
         <div class="container-gambar">
             <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
         </div>
-
         <div class="text-bg">
             <h2>Daftar Menu Kopi</h2>
             <p>Pilih Kopimu disini</p>
@@ -109,29 +108,22 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
         <?php while ($row = $query->fetch_assoc()) { ?>
             <div class="kopi-card">
                 <?php if ($row['gambar']) { ?>
-                    <img src="admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
+                    <img src="../admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
                 <?php } else { ?>
                     Tidak ada gambar
                 <?php } ?>
 
-                <h3>
-                    <?= $row['nama_kopi'] ?>
-                </h3>
+                <h3><?= $row['nama_kopi'] ?></h3>
 
-                <p class="harga">Rp
-                    <?= number_format($row['harga'], 0, ',', '.') ?>
-                </p>
+                <p class="harga">Rp <?= number_format($row['harga'], 0, ',', '.') ?></p>
 
-                <p>
-                    <?= substr($row['deskripsi'], 0, 60) ?>...
-                </p>
+                <p><?= substr($row['deskripsi'], 0, 60) ?>...</p>
 
                 <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
             </div>
         <?php } ?>
-
     </div>
-    <footer class="footer-modern">
+     <footer class="footer-modern">
         <div class="footer-overlay">
             <div class="footer-content">
 
@@ -162,7 +154,6 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
             </div>
         </div>
     </footer>
-
 
 </body>
 
