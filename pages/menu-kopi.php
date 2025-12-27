@@ -107,23 +107,27 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
     <div class="kopi-grid">
 
         <?php while ($row = $query->fetch_assoc()) { ?>
-        <div class="kopi-card">
-            <img src="../admin/assets/img/<?= $row['foto'] ?>" alt="<?= $row['nama_kopi'] ?>">
+            <div class="kopi-card">
+                <?php if ($row['gambar']) { ?>
+                    <img src="admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
+                <?php } else { ?>
+                    Tidak ada gambar
+                <?php } ?>
 
-            <h3>
-                <?= $row['nama_kopi'] ?>
-            </h3>
+                <h3>
+                    <?= $row['nama_kopi'] ?>
+                </h3>
 
-            <p class="harga">Rp
-                <?= number_format($row['harga'], 0, ',', '.') ?>
-            </p>
+                <p class="harga">Rp
+                    <?= number_format($row['harga'], 0, ',', '.') ?>
+                </p>
 
-            <p>
-                <?= substr($row['deskripsi'], 0, 60) ?>...
-            </p>
+                <p>
+                    <?= substr($row['deskripsi'], 0, 60) ?>...
+                </p>
 
-            <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
-        </div>
+                <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
+            </div>
         <?php } ?>
 
     </div>
