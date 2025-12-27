@@ -1,45 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
 body {
-    background-image: url('../admin/assets/img/bg_kopi_1.jpg');
+    min-height: 100vh;
+    display: flex;
+}
+
+
+.sidebar {
+    width: 260px;
+    background: linear-gradient(180deg, #6f3b1f, #4a2512);
+    color: #fff;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.user-info {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.user-info p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.user-info strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    color: #ffddb0;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #ff9f43;
+    color: #3b1f0e;
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    width: calc(100% - 260px);
+}
+
+.card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+}
+
+.card h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    color: #4a2512;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    border-color: #ff9f43;
+}
+
+.form-group input[readonly] {
+    background: #f3f3f3;
+    cursor: not-allowed;
+}
+
+.btn {
+    background: #ff9f43;
+    border: none;
+    color: #3b1f0e;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #e6892f;
+}
+
+.alert-success {
+    background: #e6ffed;
+    border-left: 6px solid #2ecc71;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+.alert-error {
+    background: #ffe6e6;
+    border-left: 6px solid #e74c3c;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #a94442;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.table th {
+    background: #f8f8f8;
+    font-weight: 600;
+}
+
+.table tr:hover {
+    background: #fafafa;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 200px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.stat-box h3 {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.stat-box p {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4a2512;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+    background: #f4f4f4;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    background: linear-gradient(
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.35)
+    ),
+    url('../img/bg_kopi_1.jpg');
     background-size: cover;
     background-position: center;
-    backdrop-filter: brightness(60%);
-    background-blend-mode: darken;
 
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    align-items: flex-start;
 }
 
-.card-body {
-    max-width: 360px;
+.content-card {
     width: 100%;
-    padding: 25px 35px 35px;
-    border-radius: 15px;
-    border: 2px solid #ffffffaa;
-    background: transparent;
-    backdrop-filter: blur(25px);
-    box-shadow: 0 10px 20px #00000055;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    border-radius: 16px;
+    padding: 30px 35px;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+    color: #fff;
 }
 
-.card-body h1 {
-    color: #fff;
+.content-card h1 {
     text-align: center;
     margin-bottom: 25px;
-    border-bottom: 2px solid #fff;
+    font-size: 26px;
+    border-bottom: 2px solid rgba(255,255,255,0.4);
     padding-bottom: 15px;
 }
 
 .form-login input {
-    background: transparent;
-    border: 3px solid #fff;
-    border-radius: 40px;
-    padding: 15px 20px;
     width: 100%;
+    padding: 14px 18px;
+    border-radius: 30px;
+    border: 2px solid rgba(255,255,255,0.7);
+    background: transparent;
     color: #fff;
     outline: none;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.form-login input::placeholder {
+    color: rgba(255,255,255,0.75);
 }
 
 .form-login input[readonly] {
@@ -47,45 +269,42 @@ body {
     cursor: not-allowed;
 }
 
-.form-login input::placeholder {
-    color: #ffffffce;
-}
-
 .tb-login {
     width: 100%;
-    background-color: #eb7500ff;
+    background: #eb7500;
     color: #fff;
     border: none;
     padding: 14px;
-    border-radius: 25px;
-    cursor: pointer;
+    border-radius: 30px;
     font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .tb-login:hover {
-    background-color: #964B00;
+    background: #964B00;
+    transform: scale(1.03);
     transition: 0.3s;
 }
 
 .alert-login {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #ddffdd;
+    background: rgba(76, 175, 80, 0.2);
     border-left: 6px solid #4CAF50;
-    border-radius: 5px;
-    color: #2e7d32;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 18px;
     text-align: center;
 }
 
 .aksi {
-    margin-top: 15px;
     text-align: center;
+    margin-top: 18px;
 }
 
 .aksi a {
     color: #ffb347;
-    text-decoration: none;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .aksi a:hover {

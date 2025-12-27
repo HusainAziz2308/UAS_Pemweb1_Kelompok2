@@ -8,7 +8,7 @@ if (isset($_POST['register'])) {
     $username = trim($_POST['username']);
     $email    = trim($_POST['email']);
     $nama     = trim($_POST['nama']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = trim($_POST['password']);
 
     $cekUser = $koneksi->prepare("SELECT username FROM tb_user WHERE username = ?");
     $cekUser->bind_param("s", $username);
