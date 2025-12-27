@@ -94,7 +94,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
             <p>Pilih Kopimu disini</p>
         </div>
     </section>
-    <section class="container">
+    <div class="container">
         <div class="kopi-grid">
 
             <?php while ($row = $query->fetch_assoc()) { ?>
@@ -115,7 +115,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
                 </div>
             <?php } ?>
         </div>
-    </section>
+    </div>
     <?php include '../partials/footer.php'; ?>
 
 </body>
