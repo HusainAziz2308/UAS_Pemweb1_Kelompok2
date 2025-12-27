@@ -82,18 +82,9 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <h2 class="logo">Ruang Kopi</h2>
-            <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="menu-kopi.php" class="active">Menu</a></li>
-                <li><a href="tentang.php">Tentang</a></li>
-                <li><a href="login.php">Login/Daftar</a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php include '../partials/navbar.php'; ?>
     <section class="gambar-bg-section">
         <div class="container-gambar">
             <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
@@ -123,7 +114,7 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
             </div>
         <?php } ?>
     </div>
-     <footer class="footer-modern">
+    <footer class="footer-modern">
         <div class="footer-overlay">
             <div class="footer-content">
 
