@@ -10,9 +10,9 @@
             <div class="footer-links">
                 <h4>Navigasi</h4>
                 <a href="index.php">Home</a>
-                <a href="pages/menu-kopi.php">Menu</a>
-                <a href="pages/tentang.php">Tentang</a>
-                <a href="pages/login.php">Login / Daftar</a>
+                <a href="menu-kopi.php">Menu</a>
+                <a href="tentang.php">Tentang</a>
+                <a href="login.php">Login / Daftar</a>
             </div>
 
             <div class="footer-info">
