@@ -48,6 +48,7 @@ if (isset($_POST['login'])) {
     <title>Login User | Ruang Kopi</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="../admin/assets/css/login.css">
+    <link rel="stylesheet" href="../admin/assets/css/profil.css">
 </head>
 
 <body>
