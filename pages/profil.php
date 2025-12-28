@@ -52,7 +52,6 @@ if (isset($_POST['update'])) {
 <body>
     <?php include "../partials/sidebar.php"; ?>
     <h2>Profil Saya</h2>
-    <p>Halo <?= $_SESSION['nama_user']; ?>! </p>
     <?php if ($pesan): ?>
         <p><?= htmlspecialchars($pesan); ?></p>
     <?php endif; ?>
