@@ -49,7 +49,22 @@ if (isset($_POST['update'])) {
 </head>
 
 <body>
+    <aside class="sidebar">
+        <h2>Ruang Kopi</h2>
 
+        <div class="user-info">
+            <p>👋 Halo,</p>
+            <strong><?= htmlspecialchars($_SESSION['nama_user']); ?></strong>
+        </div>
+
+        <nav>
+            <a href="dashboard-user.php">Dashboard</a>
+            <a href="profil.php">Profil</a>
+            <a href="ganti-password.php">Ganti Password</a>
+            <a href="pesanan-saya.php">Pesanan Saya</a>
+            <a href="logout.php">Logout</a>
+        </nav>
+    </aside>
     <h2>Profil Saya</h2>
     <p>Halo <?= $_SESSION['nama_user']; ?>! </p>
     <?php if ($pesan): ?>
@@ -74,12 +89,6 @@ if (isset($_POST['update'])) {
 
         <button type="submit" name="update">Update Profil</button>
     </form>
-    <div class="aksi">
-        <a href="ganti-password.php">🔒 Ganti Password</a> |
-        <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">🚪 Logout</a>
-    </div>
-
-
     <hr>
 
     <a href="logout.php">Logout</a>
