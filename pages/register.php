@@ -74,7 +74,7 @@ if (isset($_POST['register'])) {
             </div>
 
             <div class="form-login">
-                <input type="text" name="nama" placeholder="Nama Lengkap" required>
+                <input type="text" name="nama" placeholder="Nama Kamu" required>
             </div>
 
             <div class="form-login">
