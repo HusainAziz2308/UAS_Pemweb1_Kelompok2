@@ -22,7 +22,7 @@ if (isset($_POST['update'])) {
     $email = trim($_POST['email']);
 
     if ($nama == "" || $email == "") {
-        $pesan = "Nama dan email wajib diisi!";
+        $pesan = "<div class='alert' style='background:#f8d7da; color:#721c24; border-color:#f5c6cb;'>Nama dan email wajib diisi!</div>";
     } else {
         $stmt = $koneksi->prepare("
             UPDATE tb_user 
@@ -30,11 +30,17 @@ if (isset($_POST['update'])) {
             WHERE username = ?
         ");
         $stmt->bind_param("sss", $nama, $email, $username);
-        $stmt->execute();
+        
+        if ($stmt->execute()) {
+            $_SESSION['nama_user'] = $nama;
+            $pesan = "<div class='alert'>Profil berhasil diperbarui!</div>";
+            // Refresh data user agar form langsung terupdate
+            $user['nama'] = $nama;
+            $user['email'] = $email;
+        } else {
+            $pesan = "<div class='alert' style='background:#f8d7da; color:#721c24;'>Gagal update database.</div>";
+        }
         $stmt->close();
-
-        $_SESSION['nama_user'] = $nama;
-        $pesan = "Profil berhasil diperbarui!";
     }
 }
 ?>
@@ -51,6 +57,7 @@ if (isset($_POST['update'])) {
 </head>
 
 <body>
+    
     <aside class="sidebar">
         <h2>Ruang Kopi</h2>
         <div class="user-info">
@@ -62,40 +69,41 @@ if (isset($_POST['update'])) {
         <nav>
             <a href="menu-kopi.php">☕ Menu Utama</a>
             <a href="dashboard-user.php">📊 Dashboard</a>
-            <a href="profil.php">👤 Profil</a>
-            <a href="pesanan-saya.php">🧾 Pesanan Saya</a>
+            <a href="profil.php" class="active">👤 Profil</a> <a href="pesanan-saya.php">🧾 Pesanan Saya</a>
             <a href="ganti-password.php">🔐 Ganti Password</a>
-            <hr>
+            <hr style="border: 0; border-top: 1px solid #6b5048; margin: 10px 0;">
             <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">🚪 Logout</a>
         </nav>
     </aside>
-    <h2>Profil Saya</h2>
-    <?php if ($pesan): ?>
-        <p>
-            <?= htmlspecialchars($pesan); ?>
-        </p>
-    <?php endif; ?>
 
-    <form method="POST">
-        <p>
-            <label>Username</label><br>
-            <input type="text" value="<?= htmlspecialchars($user['username']); ?>" readonly>
-        </p>
+    <div class="main-content">
+        <div class="container-profile">
+            <h2>Profil Saya</h2>
+            
+            <?php if ($pesan): ?>
+                <?= $pesan; ?>
+            <?php endif; ?>
 
-        <p>
-            <label>Email</label><br>
-            <input type="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
-        </p>
+            <form method="POST">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" value="<?= htmlspecialchars($user['username']); ?>" readonly>
+                </div>
 
-        <p>
-            <label>Nama Lengkap</label><br>
-            <input type="text" name="nama" value="<?= htmlspecialchars($user['nama']); ?>" required>
-        </p>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required>
+                </div>
 
-        <button type="submit" name="update">Update Profil</button>
-    </form>
-    <hr>
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" name="nama" value="<?= htmlspecialchars($user['nama']); ?>" required>
+                </div>
+
+                <button type="submit" name="update">Update Profil</button>
+            </form>
+        </div>
+    </div>
 
 </body>
-
 </html>
