@@ -46,25 +46,11 @@ if (isset($_POST['update'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Profil Saya</title>
+    <link rel="stylesheet" href="../admin/assets/css/style.css">
 </head>
 
 <body>
-    <aside class="sidebar">
-        <h2>Ruang Kopi</h2>
-
-        <div class="user-info">
-            <p>👋 Halo,</p>
-            <strong><?= htmlspecialchars($_SESSION['nama_user']); ?></strong>
-        </div>
-
-        <nav>
-            <a href="dashboard-user.php">Dashboard</a>
-            <a href="profil.php">Profil</a>
-            <a href="ganti-password.php">Ganti Password</a>
-            <a href="pesanan-saya.php">Pesanan Saya</a>
-            <a href="logout.php">Logout</a>
-        </nav>
-    </aside>
+    <?php include "../partials/sidebar.php"; ?>
     <h2>Profil Saya</h2>
     <p>Halo <?= $_SESSION['nama_user']; ?>! </p>
     <?php if ($pesan): ?>
