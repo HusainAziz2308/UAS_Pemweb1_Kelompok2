@@ -82,15 +82,34 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 
 <body>
     <nav class="navbar">
-        <div class="container">
-            <h2 class="logo">Ruang Kopi</h2>
-            <ul>
-                <li><a href="index.php" class="active">Home</a></li>
-                <li><a href="pages/menu-kopi.php">Menu</a></li>
-                <li><a href="pages/tentang.php">Tentang</a></li>
-                <li><a href="pages/login.php">Login/Daftar</a></li>
-            </ul>
-        </div>
+    <div class="container">
+        <h2 class="logo">Ruang Kopi</h2>
+        <ul>
+            <li><a href="../index.php" class="active">Home</a></li>
+            <li><a href="menu-kopi.php">Menu</a></li>
+            <li><a href="tentang.php">Tentang</a></li>
+
+            <?php if (isset($_SESSION['user'])): ?>
+                <li class="nav-user">
+                    <span>👋 <?= htmlspecialchars($_SESSION['nama_user']); ?></span>
+                </li>
+                <li>
+                    <a href="dashboard-user.php">Dashboard</a>
+                </li>
+                <li>
+                    <a href="logout.php"
+                       onclick="return confirm('Yakin ingin logout?')">
+                       Logout
+                    </a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="login.php">Login / Daftar</a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </div>
+</nav>
     </nav>
     <section class="gambar-bg-section">
         <div class="container-gambar">

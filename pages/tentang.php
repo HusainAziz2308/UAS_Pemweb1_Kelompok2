@@ -27,11 +27,28 @@
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="menu-kopi.php">Menu</a></li>
                 <li><a href="tentang.php" class="active">Tentang</a></li>
-                <li><a href="login.php">Login/Daftar</a></li>
+
+                <?php if (isset($_SESSION['user'])): ?>
+                    <li class="nav-user">
+                        <span>👋 <?= htmlspecialchars($_SESSION['nama_user']); ?></span>
+                    </li>
+                    <li>
+                        <a href="dashboard-user.php">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="logout.php"
+                            onclick="return confirm('Yakin ingin logout?')">
+                            Logout
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="login.php">Login / Daftar</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>
-
     <section class="gambar-bg-section">
         <div class="bg-overlay"></div> <img class="gambar-bg" src="../admin/assets/img/bg_kopi_1.jpg" alt="gambar bg">
         <div class="text-bg">
