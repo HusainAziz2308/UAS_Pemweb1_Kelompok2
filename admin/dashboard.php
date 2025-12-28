@@ -36,7 +36,7 @@ if (!$query) {
     <a href="logout.php" class="logout">Logout</a>
     <h1>Dashboard Admin</h1>
     <p>Selamat datang Kak <b><?= $_SESSION['nama_admin']; ?></b>! Selamat Bekerja.... </p>
-    <a href="laporan_penjualan.php"> Laporan Penjualan</a>
+    <a href="pesanan.php">📦 Data Pesanan</a>
     <br><br>    
     <a href="tambah_kopi.php">+ Tambah Kopi</a> 
 
