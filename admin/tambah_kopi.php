@@ -55,6 +55,7 @@ if (isset($_POST['simpan'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,8 +75,19 @@ if (isset($_POST['simpan'])) {
         }
     </style>
 </head>
+
 <body>
-    <h2>Tambah Kopi</h2>
+    <a href="logout.php" class="logout">Logout</a>
+
+    <h1>Dashboard Admin</h1>
+    <p>Selamat datang, <b><?= $_SESSION['nama_admin']; ?></b></p>
+
+    <div class="top-nav">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="pesanan-admin.php">Pesanan</a>
+        <a href="tambah_kopi.php">Tambah Kopi</a>
+    </div>
+
 
     <?php if ($error): ?>
         <div class="error"><?= $error; ?></div>
@@ -123,4 +135,5 @@ if (isset($_POST['simpan'])) {
         }
     });
 </script>
+
 </html>

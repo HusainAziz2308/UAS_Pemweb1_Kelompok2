@@ -16,6 +16,7 @@ $query = mysqli_query($koneksi, "
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,44 +24,55 @@ $query = mysqli_query($koneksi, "
     <title>Data Pesanan</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
+    <a href="logout.php" class="logout">Logout</a>
 
-<h2>📦 Data Pesanan User</h2>
+    <h1>Dashboard Admin</h1>
+    <p>Selamat datang, <b><?= $_SESSION['nama_admin']; ?></b></p>
 
-<table border="1" cellpadding="10" cellspacing="0">
-    <tr>
-        <th>No</th>
-        <th>User</th>
-        <th>Tanggal</th>
-        <th>Total</th>
-        <th>Status</th>
-        <th>Aksi</th>
-    </tr>
+    <div class="top-nav">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="pesanan-admin.php">Pesanan</a>
+        <a href="tambah_kopi.php">Tambah Kopi</a>
+    </div>
 
-<?php $no = 1; while ($row = mysqli_fetch_assoc($query)): ?>
-<tr>
-    <td><?= $no++; ?></td>
-    <td><?= htmlspecialchars($row['nama']); ?></td>
-    <td><?= date('d-m-Y H:i', strtotime($row['tanggal'])); ?></td>
-    <td>Rp <?= number_format($row['total_harga']); ?></td>
-    <td>
-        <form method="POST" action="update_status.php">
-            <input type="hidden" name="id_pesanan" value="<?= $row['id_pesanan']; ?>">
-            <select name="status" onchange="this.form.submit()">
-                <option <?= $row['status']=='pending'?'selected':'' ?>>pending</option>
-                <option <?= $row['status']=='diproses'?'selected':'' ?>>diproses</option>
-                <option <?= $row['status']=='selesai'?'selected':'' ?>>selesai</option>
-                <option <?= $row['status']=='dibatalkan'?'selected':'' ?>>dibatalkan</option>
-            </select>
-        </form>
-    </td>
-    <td>
-        <a href="detail-pesanan.php?id=<?= $row['id_pesanan']; ?>">Detail</a>
-    </td>
-</tr>
-<?php endwhile; ?>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <tr>
+            <th>No</th>
+            <th>User</th>
+            <th>Tanggal</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        </tr>
 
-</table>
+        <?php $no = 1;
+        while ($row = mysqli_fetch_assoc($query)): ?>
+            <tr>
+                <td><?= $no++; ?></td>
+                <td><?= htmlspecialchars($row['nama']); ?></td>
+                <td><?= date('d-m-Y H:i', strtotime($row['tanggal'])); ?></td>
+                <td>Rp <?= number_format($row['total_harga']); ?></td>
+                <td>
+                    <form method="POST" action="update_status.php">
+                        <input type="hidden" name="id_pesanan" value="<?= $row['id_pesanan']; ?>">
+                        <select name="status" onchange="this.form.submit()">
+                            <option <?= $row['status'] == 'pending' ? 'selected' : '' ?>>pending</option>
+                            <option <?= $row['status'] == 'diproses' ? 'selected' : '' ?>>diproses</option>
+                            <option <?= $row['status'] == 'selesai' ? 'selected' : '' ?>>selesai</option>
+                            <option <?= $row['status'] == 'dibatalkan' ? 'selected' : '' ?>>dibatalkan</option>
+                        </select>
+                    </form>
+                </td>
+                <td>
+                    <a href="detail-pesanan.php?id=<?= $row['id_pesanan']; ?>">Detail</a>
+                </td>
+            </tr>
+        <?php endwhile; ?>
+
+    </table>
 
 </body>
+
 </html>

@@ -19,9 +19,10 @@ if (!$query) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Dashboard Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
     <style>
         .img-kopi {
             max-width: 80px;
@@ -35,10 +36,13 @@ if (!$query) {
 <body>
     <a href="logout.php" class="logout">Logout</a>
     <h1>Dashboard Admin</h1>
-    <p>Selamat datang Kak <b><?= $_SESSION['nama_admin']; ?></b>! Selamat Bekerja.... </p>
-    <a href="pesanan.php">📦 Data Pesanan</a>
-    <br><br>    
-    <a href="tambah_kopi.php">+ Tambah Kopi</a> 
+    <p>Selamat datang, <b><?= $_SESSION['nama_admin']; ?></b></p>
+
+    <div class="top-nav">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="pesanan-admin.php">Pesanan</a>
+        <a href="tambah_kopi.php">Tambah Kopi</a>
+    </div>
 
     <table>
         <tr>
