@@ -34,7 +34,6 @@ if (isset($_POST['update'])) {
         if ($stmt->execute()) {
             $_SESSION['nama_user'] = $nama;
             $pesan = "<div class='alert'>Profil berhasil diperbarui!</div>";
-            // Refresh data user agar form langsung terupdate
             $user['nama'] = $nama;
             $user['email'] = $email;
         } else {
