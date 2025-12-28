@@ -73,8 +73,19 @@ if (isset($_POST['update'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Dashboard | Edit Kopi</title>
+    <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 <body>
+    <a href="logout.php" class="logout">Logout</a>
+    <h1>Dashboard Admin</h1>
+    <p>Selamat datang, <b><?= $_SESSION['nama_admin']; ?></b></p>
+
+    <div class="top-nav">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="pesanan.php">Pesanan</a>
+        <a href="tambah_kopi.php">Tambah Kopi</a>
+    </div>
+
     <h2>Edit Kopi</h2>
     <?php if ($error): ?>
         <p style="color:red;"><?= $error; ?></p>

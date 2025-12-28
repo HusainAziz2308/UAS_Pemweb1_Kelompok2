@@ -21,7 +21,6 @@ if (!$query) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Dashboard Admin</title>
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/admin.css">
     <style>
         .img-kopi {
@@ -40,7 +39,7 @@ if (!$query) {
 
     <div class="top-nav">
         <a href="dashboard.php">Dashboard</a>
-        <a href="pesanan-admin.php">Pesanan</a>
+        <a href="pesanan.php">Pesanan</a>
         <a href="tambah_kopi.php">Tambah Kopi</a>
     </div>
 

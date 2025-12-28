@@ -67,7 +67,7 @@ if (isset($_POST['ubah_status'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Detail Pesanan Admin</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 
 <body>
