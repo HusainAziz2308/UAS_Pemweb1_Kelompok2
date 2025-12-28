@@ -2,7 +2,7 @@
     <h2>Ruang Kopi</h2>
 
     <div class="user-info">
-        <p>👋 Halo,</p>
+        <p>👋 Halo <?= $_SESSION['nama_user']; ?>!</p>
         <strong><?= htmlspecialchars($_SESSION['nama_user']); ?></strong>
     </div>
 
