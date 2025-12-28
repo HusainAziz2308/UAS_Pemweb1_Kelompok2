@@ -204,7 +204,7 @@ $queryPopuler = $koneksi->query("
         <section class="section" id="cara-pemesanan">
             <h2>Cara Pemesanan</h2>
             <ol>
-                <li>Pergi Ke <a href="pages/menu-kopi.php">Menu kopi</a></li>
+                <li>Pergi Ke <a style="color: white; text-decoration: none; font-weight: 600; " href="pages/menu-kopi.php">Menu kopi</a></li>
                 <li>Pilih Kopi</li>
                 <li>Klik <b>Pesan Sekarang</b> Pada Kopi Yang Mau Dipesan</li>
                 <li>Isi Jumlah Yang Mau Dibeli</li>
