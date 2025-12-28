@@ -199,44 +199,18 @@ $queryPopuler = $koneksi->query("
         <section class="section" id="cara-pemesanan">
             <h2>Cara Pemesanan</h2>
             <ol>
-                <li>Pilih kopi</li>
-                <li>Isi form pemesanan</li>
-                <li>Konfirmasi</li>
-                <li>Selesai</li>
+                <li>Pergi Ke <a href="pages/menu-kopi.php">Menu kopi</a></li>
+                <li>Pilih Kopi</li>
+                <li>Klik <b>Pesan Sekarang</b> Pada Kopi Yang Mau Dipesan</li>
+                <li>Isi Jumlah Yang Mau Dibeli</li>
+                <li>Klik <b>Pesan Sekarang</b></li>
+                <li>Cek Status dan Detail Pesanan</li>
+                <li>Pergi Ke Outlet Terdekat</li>
+                <li>Lakukan Pembayaran Dengan Menunjukkan QR Code Yang Telah Disediakan</li>
             </ol>
         </section>
     </main>
-    <footer class="footer-modern">
-        <div class="footer-overlay">
-            <div class="footer-content">
-
-                <div class="footer-brand">
-                    <h2>Ruang Kopi</h2>
-                    <p>Tempat terbaik untuk menikmati kopi, berbagi cerita, dan menemukan inspirasi.</p>
-                </div>
-
-                <div class="footer-links">
-                    <h4>Navigasi</h4>
-                    <a href="index.php">Home</a>
-                    <a href="pages/menu-kopi.php">Menu</a>
-                    <a href="pages/tentang.php">Tentang</a>
-                    <a href="pages/login.php">Login / Daftar</a>
-                </div>
-
-                <div class="footer-info">
-                    <h4>Informasi</h4>
-                    <p>📍 Jl. Kopi Nusantara No.10</p>
-                    <p>📞 (0351) 123456</p>
-                    <p>✉️ info@kopi.com</p>
-                </div>
-
-            </div>
-
-            <div class="footer-copy">
-                <p>© 2025 Ruang Kopi — Crafted with ☕</p>
-            </div>
-        </div>
-    </footer>
+    <?php include 'partials/footer2.php'; ?>
 </body>
 
 </html>

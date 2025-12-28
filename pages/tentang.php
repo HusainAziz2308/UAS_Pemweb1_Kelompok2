@@ -109,7 +109,7 @@ session_start();
                             <img src="../admin/assets/img/nukhi.jpeg" alt="Nukhi">
                         </div>
                         <h3>Nukhi Alvin Rahmahdani</h3>
-                        <p class="jabatan">Coffee Roaster</p>
+                        <p class="jabatan">Admin</p>
                     </div>
                 </div>
             </div>
