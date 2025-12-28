@@ -73,6 +73,13 @@ if (isset($_POST['update'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Dashboard | Edit Kopi</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
     <a href="logout.php" class="logout">Logout</a>

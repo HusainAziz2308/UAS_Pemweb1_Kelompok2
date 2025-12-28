@@ -22,6 +22,11 @@ if (!$query) {
     <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Dashboard Admin</title>
     <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
         .img-kopi {
             max-width: 80px;
             height: auto;

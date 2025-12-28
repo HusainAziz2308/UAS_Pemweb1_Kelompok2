@@ -62,6 +62,11 @@ if (isset($_POST['simpan'])) {
     <link rel="shortcut icon" href="assets/icon/favicon1.png" type="image/png">
     <title>Dashboard | Tambah Kopi</title>
     <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
         .preview img {
             max-width: 80px;
             margin-top: 10px;
