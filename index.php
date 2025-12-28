@@ -1,7 +1,12 @@
 <?php
 session_start();
 require "admin/config/koneksi.php";
-$query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
+$queryPopuler = $koneksi->query("
+    SELECT * 
+    FROM tb_kopi 
+    ORDER BY id_kopi DESC 
+    LIMIT 3
+");
 ?>
 
 <!DOCTYPE html>
@@ -83,34 +88,34 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 
 <body>
     <nav class="navbar">
-    <div class="container">
-        <h2 class="logo">Ruang Kopi</h2>
-        <ul>
-            <li><a href="index.php" class="active">Home</a></li>
-            <li><a href="pages/menu-kopi.php">Menu</a></li>
-            <li><a href="pages/tentang.php">Tentang</a></li>
+        <div class="container">
+            <h2 class="logo">Ruang Kopi</h2>
+            <ul>
+                <li><a href="index.php" class="active">Home</a></li>
+                <li><a href="pages/menu-kopi.php">Menu</a></li>
+                <li><a href="pages/tentang.php">Tentang</a></li>
 
-            <?php if (isset($_SESSION['user'])): ?>
-                <li class="nav-user">
-                    <span>👋 <?= htmlspecialchars($_SESSION['nama_user']); ?></span>
-                </li>
-                <li>
-                    <a href="dashboard-user.php">Dashboard</a>
-                </li>
-                <li>
-                    <a href="logout.php"
-                       onclick="return confirm('Yakin ingin logout?')">
-                       Logout
-                    </a>
-                </li>
-            <?php else: ?>
-                <li>
-                    <a href="login.php">Login / Daftar</a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </div>
-</nav>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <li class="nav-user">
+                        <span>👋 <?= htmlspecialchars($_SESSION['nama_user']); ?></span>
+                    </li>
+                    <li>
+                        <a href="pages/dashboard-user.php">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="pages/logout.php"
+                            onclick="return confirm('Yakin ingin logout?')">
+                            Logout
+                        </a>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="pages/login.php">Login / Daftar</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </nav>
     </nav>
     <section class="gambar-bg-section">
         <div class="container-gambar">
@@ -157,28 +162,36 @@ $query = $koneksi->query("SELECT * FROM tb_kopi ORDER BY id_kopi DESC");
 
         <section class="section" id="produk-kopi">
             <h2>Produk Kopi Populer</h2>
+
             <div class="kopi-grid">
-                <div class="kopi-card">
-                    <?php if ($row['gambar']) { ?>
-                        <img src="../admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
-                    <?php } else { ?>
-                        Tidak ada gambar
-                    <?php } ?>
 
-                    <h3>
-                        <?= $row['nama_kopi'] ?>
-                    </h3>
+                <?php while ($row = $queryPopuler->fetch_assoc()) { ?>
+                    <div class="kopi-card">
+                        <?php if ($row['gambar']) { ?>
+                            <img src="../admin/assets/img/<?= $row['gambar']; ?>" class="img-kopi">
+                        <?php } else { ?>
+                            <p>Tidak ada gambar</p>
+                        <?php } ?>
 
-                    <p class="harga">Rp
-                        <?= number_format($row['harga'], 0, ',', '.') ?>
-                    </p>
+                        <h3><?= $row['nama_kopi']; ?></h3>
 
-                    <p>
-                        <?= substr($row['deskripsi'], 0, 60) ?>...
-                    </p>
+                        <p class="harga">
+                            Rp <?= number_format($row['harga'], 0, ',', '.'); ?>
+                        </p>
 
-                    <a href="pesan.php?id=<?= $row['id_kopi'] ?>" class="tb-order">Pesan Sekarang</a>
-                </div>
+                        <p>
+                            <?= substr($row['deskripsi'], 0, 60); ?>...
+                        </p>
+
+                        <a href="pesan.php?id=<?= $row['id_kopi']; ?>" class="tb-order">
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                <?php } ?>
+
+            </div>
+
+            <div style="text-align:center; margin-top:30px;">
                 <a href="pages/menu-kopi.php" class="tb-menu">Lihat Menu Kopi</a>
             </div>
         </section>
