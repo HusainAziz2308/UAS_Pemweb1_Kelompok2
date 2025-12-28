@@ -96,8 +96,6 @@ if (isset($_POST['update'])) {
     </form>
     <hr>
 
-    <a href="logout.php">Logout</a>
-
 </body>
 
 </html>
