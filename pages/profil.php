@@ -47,13 +47,33 @@ if (isset($_POST['update'])) {
     <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <title>Profil Saya</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
+    <link rel="stylesheet" href="../admin/assets/css/profil.css">
 </head>
 
 <body>
-    <?php include "../partials/sidebar.php"; ?>
+    <aside class="sidebar">
+        <h2>Ruang Kopi</h2>
+        <div class="user-info">
+            <p>👋 Halo,</p>
+            <strong>
+                <?= htmlspecialchars($_SESSION['nama_user']); ?>
+            </strong>
+        </div>
+        <nav>
+            <a href="menu-kopi.php">☕ Menu Utama</a>
+            <a href="dashboard-user.php">📊 Dashboard</a>
+            <a href="profil.php">👤 Profil</a>
+            <a href="pesanan-saya.php">🧾 Pesanan Saya</a>
+            <a href="ganti-password.php">🔐 Ganti Password</a>
+            <hr>
+            <a href="logout.php" onclick="return confirm('Yakin ingin logout?')">🚪 Logout</a>
+        </nav>
+    </aside>
     <h2>Profil Saya</h2>
     <?php if ($pesan): ?>
-        <p><?= htmlspecialchars($pesan); ?></p>
+        <p>
+            <?= htmlspecialchars($pesan); ?>
+        </p>
     <?php endif; ?>
 
     <form method="POST">
