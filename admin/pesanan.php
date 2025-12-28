@@ -35,7 +35,7 @@ $query = mysqli_query($koneksi, "
     <a href="logout.php" class="logout">Logout</a>
 
     <h1>Dashboard Admin</h1>
-    <p>Selamat datang, <b><?= $_SESSION['nama_admin']; ?></b></p>
+    <p>Selamat datang Kak <?= $_SESSION['nama_admin']; ?>! Selamat Bekerja...</p>
 
     <div class="top-nav">
         <a href="dashboard.php">Dashboard</a>
