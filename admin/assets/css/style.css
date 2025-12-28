@@ -119,3 +119,10 @@ body {
     background-color: #eb7500;
     color: #fff;
 }
+
+.nav-user span {
+    color: #ffb347;
+    font-weight: bold;
+    padding: 8px 12px;
+    display: inline-block;
+}
