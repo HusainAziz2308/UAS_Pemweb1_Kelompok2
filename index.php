@@ -78,11 +78,16 @@ $queryPopuler = $koneksi->query("
     .tb-menu {
         text-decoration: none;
         padding: 10px 15px;
-        background: #e67e22;
+        background: #c97800;
         color: #fff;
         border-radius: 8px;
         display: inline-block;
         margin-top: 20px;
+    }
+
+    .tb-menu:hover {
+        background: #ee8f00;
+        zoom: 1.05;
     }
 </style>
 
