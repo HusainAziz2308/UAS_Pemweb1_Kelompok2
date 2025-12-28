@@ -55,7 +55,7 @@ $query = mysqli_query($koneksi, "
         </form>
     </td>
     <td>
-        <a href="detail_pesanan.php?id=<?= $row['id_pesanan']; ?>">Detail</a>
+        <a href="detail-pesanan.php?id=<?= $row['id_pesanan']; ?>">Detail</a>
     </td>
 </tr>
 <?php endwhile; ?>
