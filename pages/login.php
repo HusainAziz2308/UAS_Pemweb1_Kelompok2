@@ -3,7 +3,7 @@ session_start();
 require "../admin/config/koneksi.php";
 
 if (isset($_SESSION['user'])) {
-    header("Location: profil.php");
+    header("Location: dashboard-user.php");
     exit();
 }
 
@@ -26,7 +26,7 @@ if (isset($_POST['login'])) {
             $_SESSION['nama_user'] = $user['nama'];
             $_SESSION['email_user'] = $user['email'];
 
-            header("Location: profil.php");
+            header("Location: dashboard-user.php");
             exit();
         } else {
             $pesan = "Password salah!";
