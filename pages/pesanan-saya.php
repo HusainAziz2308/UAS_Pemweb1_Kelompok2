@@ -12,12 +12,12 @@ $username = $_SESSION['user'];
 $stmt = $koneksi->prepare("
     SELECT 
         p.id_pesanan,
-        p.tanggal_pesanan,
+        p.tanggal,
         p.total_harga,
         p.status
     FROM tb_pesanan p
     WHERE p.username = ?
-    ORDER BY p.tanggal_pesanan DESC
+    ORDER BY p.tanggal DESC
 ");
 $stmt->bind_param("s", $username);
 $stmt->execute();
@@ -57,7 +57,7 @@ $result = $stmt->get_result();
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <tr>
                         <td><?= $no++; ?></td>
-                        <td><?= date('d-m-Y', strtotime($row['tanggal_pesanan'])); ?></td>
+                        <td><?= date('d-m-Y', strtotime($row['tanggal'])); ?></td>
                         <td>Rp <?= number_format($row['total_harga']); ?></td>
                         <td>
                             <?php
