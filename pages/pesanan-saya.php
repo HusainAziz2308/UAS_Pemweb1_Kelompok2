@@ -189,7 +189,7 @@ $result = $stmt->get_result();
                                 <td>
                                     <?php
                                     $status = strtolower($row['status']);
-                                    $badgeClass = 'bg-warning'; // Default (pending/diproses)
+                                    $badgeClass = 'bg-warning';
 
                                     if ($status == 'selesai') $badgeClass = 'bg-success';
                                     if ($status == 'dibatalkan') $badgeClass = 'bg-danger';
@@ -199,14 +199,18 @@ $result = $stmt->get_result();
                                     </span>
                                 </td>
                                 <td>
-                                    <?php if ($status == 'pending' || $status == 'diproses'): ?>
-                                        <form method="POST" onsubmit="return confirm('Yakin ingin membatalkan pesanan ini?');">
-                                            <input type="hidden" name="id_pesanan_batal" value="<?= $row['id_pesanan']; ?>">
-                                            <button type="submit" name="batalkan" class="btn-batal">❌ Batalkan</button>
-                                        </form>
-                                    <?php else: ?>
-                                        <span style="color: #aaa; font-size: 12px;">-</span>
-                                    <?php endif; ?>
+                                    <div style="display: flex; gap: 5px;">
+                                        <a href="detail-pesanan.php?id=<?= $row['id_pesanan']; ?>"
+                                            style="background: #be9b7b; color: white; padding: 5px 10px; border-radius: 5px; text-decoration: none; font-size: 12px;">
+                                            🔍 Detail
+                                        </a>
+                                        <?php if ($status == 'pending' || $status == 'diproses'): ?>
+                                            <form method="POST" onsubmit="return confirm('Yakin ingin membatalkan pesanan ini?');">
+                                                <input type="hidden" name="id_pesanan_batal" value="<?= $row['id_pesanan']; ?>">
+                                                <button type="submit" name="batalkan" class="btn-batal">❌ Batal</button>
+                                            </form>
+                                        <?php endif; ?>
+                                    </div>
                                 </td>
                             </tr>
                         <?php endwhile; ?>
