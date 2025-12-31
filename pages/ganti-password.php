@@ -16,56 +16,6 @@ if (isset($_POST['ubah'])) {
     $password_baru = trim($_POST['password_baru']);
     $konfirmasi    = trim($_POST['konfirmasi']);
 
-    // Ambil password lama dari database
-    $stmt = $koneksi->prepare("SELECT password FROM tb_user WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $data = $result->fetch_assoc();
-    $stmt->close();
-
-    if (!$data) {
-        $error = "User tidak ditemukan!";
-    } elseif ($password_lama !== $data['password']) {
-        $error = "Password lama salah!";
-    } elseif ($password_baru === "") {
-        $error = "Password baru tidak boleh kosong!";
-    } elseif ($password_baru !== $konfirmasi) {
-        $error = "Konfirmasi password tidak cocok!";
-    } else {
-        // Update password
-        $stmt = $koneksi->prepare("
-            UPDATE tb_user 
-            SET password = ? 
-            WHERE username = ?
-        ");
-        $stmt->bind_param("ss", $password_baru, $username);
-        $stmt->execute();
-        $stmt->close();
-
-        $pesan = "Password berhasil diperbarui!";
-    }
-}
-?>
-<?php
-session_start();
-require "../admin/config/koneksi.php";
-
-if (!isset($_SESSION['user'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$username = $_SESSION['user'];
-$pesan = "";
-$error = "";
-
-if (isset($_POST['ubah'])) {
-    $password_lama = trim($_POST['password_lama']);
-    $password_baru = trim($_POST['password_baru']);
-    $konfirmasi    = trim($_POST['konfirmasi']);
-
-    // Ambil password lama dari database
     $stmt = $koneksi->prepare("SELECT password FROM tb_user WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
