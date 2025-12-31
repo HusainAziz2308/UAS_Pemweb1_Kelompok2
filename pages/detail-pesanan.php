@@ -52,6 +52,7 @@ $detail = $stmt->get_result();
     <title>Detail Pesanan #<?= $id_pesanan ?></title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="../admin/assets/css/profil.css">
+    <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <style>
         .detail-wrapper {
             display: flex;

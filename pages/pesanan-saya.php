@@ -32,6 +32,7 @@ $result = $stmt->get_result();
     <title>Pesanan Saya | Ruang Kopi</title>
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="../admin/assets/css/profil.css">
+    <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
 
     <style>
         .table-container {

@@ -46,6 +46,7 @@ $lastOrder = $qLastOrder->get_result()->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard User | Ruang Kopi</title>
+    <link rel="shortcut icon" href="../admin/assets/icon/favicon1.png" type="image/png">
     <link rel="stylesheet" href="../admin/assets/css/style.css">
     <link rel="stylesheet" href="../admin/assets/css/profil.css">
 
